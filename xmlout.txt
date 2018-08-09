@@ -1,0 +1,1269 @@
+========pnml========
+
+========net========
+id=Net-One  type=P/T net  
+========token========
+id=Default  enabled=true  red=0  green=0  blue=0  
+========place========
+id=P1  
+========graphics========
+
+========position========
+x=285.0  y=315.0  
+========name========
+
+========value========
+--P1
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,10
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P10  
+========graphics========
+
+========position========
+x=480.0  y=315.0  
+========name========
+
+========value========
+--P10
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,1
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P11  
+========graphics========
+
+========position========
+x=480.0  y=435.0  
+========name========
+
+========value========
+--P11
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,1
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P2  
+========graphics========
+
+========position========
+x=375.0  y=195.0  
+========name========
+
+========value========
+--P2
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,0
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P3  
+========graphics========
+
+========position========
+x=375.0  y=315.0  
+========name========
+
+========value========
+--P3
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,0
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P4  
+========graphics========
+
+========position========
+x=375.0  y=435.0  
+========name========
+
+========value========
+--P4
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,0
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P5  
+========graphics========
+
+========position========
+x=675.0  y=330.0  
+========name========
+
+========value========
+--P5
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,10
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P6  
+========graphics========
+
+========position========
+x=585.0  y=195.0  
+========name========
+
+========value========
+--P6
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,0
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P7  
+========graphics========
+
+========position========
+x=585.0  y=315.0  
+========name========
+
+========value========
+--P7
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,0
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P8  
+========graphics========
+
+========position========
+x=585.0  y=435.0  
+========name========
+
+========value========
+--P8
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,0
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========place========
+id=P9  
+========graphics========
+
+========position========
+x=480.0  y=195.0  
+========name========
+
+========value========
+--P9
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========initialMarking========
+
+========value========
+--Default,2
+
+========graphics========
+
+========offset========
+x=0.0  y=0.0  
+========capacity========
+
+========value========
+--0
+
+========transition========
+id=T1  
+========graphics========
+
+========position========
+x=375.0  y=135.0  
+========name========
+
+========value========
+--T1
+
+========graphics========
+
+========offset========
+x=-5.0  y=35.0  
+========orientation========
+
+========value========
+--90
+
+========rate========
+
+========value========
+--1.0
+
+========timed========
+
+========value========
+--false
+
+========infiniteServer========
+
+========value========
+--false
+
+========priority========
+
+========value========
+--1
+
+========transition========
+id=T2  
+========graphics========
+
+========position========
+x=375.0  y=255.0  
+========name========
+
+========value========
+--T2
+
+========graphics========
+
+========offset========
+x=-5.0  y=35.0  
+========orientation========
+
+========value========
+--90
+
+========rate========
+
+========value========
+--1.0
+
+========timed========
+
+========value========
+--false
+
+========infiniteServer========
+
+========value========
+--false
+
+========priority========
+
+========value========
+--1
+
+========transition========
+id=T3  
+========graphics========
+
+========position========
+x=375.0  y=375.0  
+========name========
+
+========value========
+--T3
+
+========graphics========
+
+========offset========
+x=-5.0  y=35.0  
+========orientation========
+
+========value========
+--90
+
+========rate========
+
+========value========
+--1.0
+
+========timed========
+
+========value========
+--false
+
+========infiniteServer========
+
+========value========
+--false
+
+========priority========
+
+========value========
+--1
+
+========transition========
+id=T4  
+========graphics========
+
+========position========
+x=375.0  y=495.0  
+========name========
+
+========value========
+--T4
+
+========graphics========
+
+========offset========
+x=-5.0  y=35.0  
+========orientation========
+
+========value========
+--90
+
+========rate========
+
+========value========
+--1.0
+
+========timed========
+
+========value========
+--false
+
+========infiniteServer========
+
+========value========
+--false
+
+========priority========
+
+========value========
+--1
+
+========transition========
+id=T5  
+========graphics========
+
+========position========
+x=585.0  y=495.0  
+========name========
+
+========value========
+--T5
+
+========graphics========
+
+========offset========
+x=-5.0  y=35.0  
+========orientation========
+
+========value========
+--90
+
+========rate========
+
+========value========
+--1.0
+
+========timed========
+
+========value========
+--false
+
+========infiniteServer========
+
+========value========
+--false
+
+========priority========
+
+========value========
+--1
+
+========transition========
+id=T6  
+========graphics========
+
+========position========
+x=585.0  y=375.0  
+========name========
+
+========value========
+--T6
+
+========graphics========
+
+========offset========
+x=-5.0  y=35.0  
+========orientation========
+
+========value========
+--90
+
+========rate========
+
+========value========
+--1.0
+
+========timed========
+
+========value========
+--false
+
+========infiniteServer========
+
+========value========
+--false
+
+========priority========
+
+========value========
+--1
+
+========transition========
+id=T7  
+========graphics========
+
+========position========
+x=585.0  y=255.0  
+========name========
+
+========value========
+--T7
+
+========graphics========
+
+========offset========
+x=-5.0  y=35.0  
+========orientation========
+
+========value========
+--90
+
+========rate========
+
+========value========
+--1.0
+
+========timed========
+
+========value========
+--false
+
+========infiniteServer========
+
+========value========
+--false
+
+========priority========
+
+========value========
+--1
+
+========transition========
+id=T8  
+========graphics========
+
+========position========
+x=585.0  y=135.0  
+========name========
+
+========value========
+--T8
+
+========graphics========
+
+========offset========
+x=-5.0  y=35.0  
+========orientation========
+
+========value========
+--90
+
+========rate========
+
+========value========
+--1.0
+
+========timed========
+
+========value========
+--false
+
+========infiniteServer========
+
+========value========
+--false
+
+========priority========
+
+========value========
+--1
+
+========arc========
+id=P10 to T2  source=P10  target=T2  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=479  y=318  curvePoint=false  
+========arcpath========
+id=001  x=401  y=267  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P10 to T6  source=P10  target=T6  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=504  y=335  curvePoint=false  
+========arcpath========
+id=001  x=581  y=387  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P11 to T3  source=P11  target=T3  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=479  y=438  curvePoint=false  
+========arcpath========
+id=001  x=401  y=387  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P11 to T5  source=P11  target=T5  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=504  y=455  curvePoint=false  
+========arcpath========
+id=001  x=581  y=507  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P1 to T1  source=P1  target=T1  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=297  y=312  curvePoint=false  
+========arcpath========
+id=001  x=297  y=147  curvePoint=false  
+========arcpath========
+id=002  x=371  y=147  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P2 to T2  source=P2  target=T2  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=386  y=221  curvePoint=false  
+========arcpath========
+id=001  x=386  y=261  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P3 to T3  source=P3  target=T3  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=386  y=341  curvePoint=false  
+========arcpath========
+id=001  x=386  y=381  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P4 to T4  source=P4  target=T4  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=386  y=461  curvePoint=false  
+========arcpath========
+id=001  x=386  y=501  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P5 to T5  source=P5  target=T5  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=687  y=357  curvePoint=false  
+========arcpath========
+id=001  x=687  y=507  curvePoint=false  
+========arcpath========
+id=002  x=611  y=507  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P6 to T8  source=P6  target=T8  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=596  y=192  curvePoint=false  
+========arcpath========
+id=001  x=596  y=151  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P7 to T7  source=P7  target=T7  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=596  y=312  curvePoint=false  
+========arcpath========
+id=001  x=596  y=271  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P8 to T6  source=P8  target=T6  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=596  y=432  curvePoint=false  
+========arcpath========
+id=001  x=596  y=391  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P9 to T1  source=P9  target=T1  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=479  y=198  curvePoint=false  
+========arcpath========
+id=001  x=401  y=147  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=P9 to T7  source=P9  target=T7  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=504  y=215  curvePoint=false  
+========arcpath========
+id=001  x=581  y=267  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T1 to P2  source=T1  target=P2  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=386  y=151  curvePoint=false  
+========arcpath========
+id=001  x=386  y=192  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T2 to P3  source=T2  target=P3  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=386  y=271  curvePoint=false  
+========arcpath========
+id=001  x=386  y=312  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T2 to P9  source=T2  target=P9  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=401  y=267  curvePoint=false  
+========arcpath========
+id=001  x=479  y=215  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T3 to P10  source=T3  target=P10  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=401  y=387  curvePoint=false  
+========arcpath========
+id=001  x=479  y=335  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T3 to P4  source=T3  target=P4  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=386  y=391  curvePoint=false  
+========arcpath========
+id=001  x=386  y=432  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T4 to P1  source=T4  target=P1  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=371  y=507  curvePoint=false  
+========arcpath========
+id=001  x=297  y=507  curvePoint=false  
+========arcpath========
+id=002  x=297  y=342  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T4 to P11  source=T4  target=P11  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=401  y=507  curvePoint=false  
+========arcpath========
+id=001  x=479  y=455  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T5 to P8  source=T5  target=P8  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=596  y=501  curvePoint=false  
+========arcpath========
+id=001  x=596  y=461  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T6 to P11  source=T6  target=P11  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=581  y=387  curvePoint=false  
+========arcpath========
+id=001  x=504  y=438  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T6 to P7  source=T6  target=P7  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=596  y=381  curvePoint=false  
+========arcpath========
+id=001  x=596  y=341  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T7 to P10  source=T7  target=P10  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=581  y=267  curvePoint=false  
+========arcpath========
+id=001  x=504  y=318  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T7 to P6  source=T7  target=P6  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=596  y=261  curvePoint=false  
+========arcpath========
+id=001  x=596  y=221  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T8 to P5  source=T8  target=P5  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=611  y=147  curvePoint=false  
+========arcpath========
+id=001  x=687  y=147  curvePoint=false  
+========arcpath========
+id=002  x=687  y=327  curvePoint=false  
+========type========
+value=normal  
+========arc========
+id=T8 to P9  source=T8  target=P9  
+========graphics========
+
+========inscription========
+
+========value========
+--Default,1
+
+========graphics========
+
+========tagged========
+
+========value========
+--false
+
+========arcpath========
+id=000  x=581  y=147  curvePoint=false  
+========arcpath========
+id=001  x=504  y=198  curvePoint=false  
+========type========
+value=normal  

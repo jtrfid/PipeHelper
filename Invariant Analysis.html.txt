@@ -1,0 +1,23 @@
+### Petri net invariant analysis results
+### The net is covered by positive T-Invariants, therefore it might be bounded and live.
+### The net is covered by positive P-Invariants, therefore it is bounded.
+### P-Invariant equations
+### M(P1) + M(P2) + M(P3) + M(P4) = 10
+### M(P10) + M(P3) + M(P7) = 1
+### M(P11) + M(P4) + M(P8) = 1
+### M(P5) + M(P6) + M(P7) + M(P8) = 10
+### M(P2) + M(P6) + M(P9) = 2
+### Analysis time: 0.0s
+
+T-invariants(2 x 8):
+  T1   T2   T3   T4   T5   T6   T7   T8
+   1    1    1    1    0    0    0    0
+   0    0    0    0    1    1    1    1
+
+P-invariants(5 x 11):
+  P1   P2   P3   P4   P5   P6   P7   P8   P9  P10  P11
+   1    1    1    1    0    0    0    0    0    0    0
+   0    0    1    0    0    0    1    0    0    1    0
+   0    0    0    1    0    0    0    1    0    0    1
+   0    0    0    0    1    1    1    1    0    0    0
+   0    1    0    0    0    1    0    0    1    0    0
