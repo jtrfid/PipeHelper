@@ -1,0 +1,152 @@
+Integrated Net Analyzer [v2.2final-Jul 31 2003-win32] session report:
+Current net options are:
+    token  type: black        (for Place/Transition nets)
+    time option: no times
+    firing rule: normal
+    priorities : not to be used
+    strategy   : single transitions
+    line length: 80
+
+Net read from 20p14t.pnt
+Information on elementary structural properties:
+Current name options are:
+     transition names not to be written 
+     place names not to be written 
+The net is not statically conflict-free.
+The net is pure.
+The net is ordinary.
+The net is homogenous.
+The net is not conservative.
+The net is not subconservative.
+The net is not a state machine.
+The net is not free choice.
+The net is not extended free choice.
+The net is extended simple.
+The net is not safe.
+The net is not live and safe.
+The net is marked.
+The net is not marked with exactly one token.
+The net is not a marked graph.
+The net has a non-blocking multiplicity.
+The net has no nonempty clean trap.
+The net has no transitions without pre-place.
+The net has no transitions without post-place.
+The net has no places without pre-transition.
+The net has no places without post-transition.
+Maximal in/out-degree:  2
+The net is connected.
+The net is strongly connected.
+ORD HOM NBM PUR CSV SCF CON SC  Ft0 tF0 Fp0 pF0 MG  SM  FC  EFC ES 
+ Y   Y   Y   Y   N   N   Y   Y   N   N   N   N   N   N   N   N   Y  
+DTP SMC SMD SMA CPI CTI  B  SB  REV DSt BSt DTr DCF  L   LV L&S 
+ ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   N  
+Current analysis options are:
+     no symmetrical reduction 
+     no stubborn reduction 
+     no depth restriction 
+     do not use a 'bad' predicate 
+Computation of the reachability graph
+States generated: 1748
+Arcs generated: 5146
+
+Capacities needed:
+Place  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+ Cap:  8  1  1  2  2  1  1  8  1  1  2  2  1  1  1  1  2  2  1  1
+Dead states:
+       30, 163, 289, 290, 292, 327, 346, 355, 365, 373, 376, 386, 390, 391,
+      409, 432, 443, 454, 460, 469, 505, 525, 528, 535, 538, 540, 541, 572,
+      584, 616, 710, 854,
+Number of dead states found: 32
+The net has dead reachable states.
+The net is not live.
+The deadlock-trap-property is not valid.
+The net is not reversible (resetable).
+The net has no dead transitions at the initial marking.
+The net is not live, if dead transitions are ignored.
+The net is bounded.
+ORD HOM NBM PUR CSV SCF CON SC  Ft0 tF0 Fp0 pF0 MG  SM  FC  EFC ES 
+ Y   Y   Y   Y   N   N   Y   Y   N   N   N   N   N   N   N   N   Y  
+DTP SMC SMD SMA CPI CTI  B  SB  REV DSt BSt DTr DCF  L   LV L&S 
+ N   ?   ?   ?   ?   ?   Y   ?   N   Y   ?   N   ?   N   N   N  
+Current name options are:
+     transition names not to be written 
+     place names not to be written 
+Structural liveness properties of net nr. 0.                :
+processed candidates: 178
+There are  23 minimal deadlocks:
+-------------------------------
+   1:  8,  9, 10, 11, 12, 13, 14,
+   2:  2,  9, 15,
+   3:  7,  9, 15, 16, 17, 18, 19, 20,
+   4:  7, 10, 16, 17, 18, 19, 20,
+   5:  7, 11, 17, 18, 19, 20,
+   6:  7, 12, 18, 19, 20,
+   7:  7, 13, 19, 20,
+   8:  7, 14, 20,
+   9:  6,  9, 15, 16, 17, 18, 19,
+  10:  6, 10, 16, 17, 18, 19,
+  11:  6, 11, 17, 18, 19,
+  12:  6, 12, 18, 19,
+  13:  6, 13, 19,
+  14:  5,  9, 15, 16, 17, 18,
+  15:  5, 10, 16, 17, 18,
+  16:  5, 11, 17, 18,
+  17:  5, 12, 18,
+  18:  4,  9, 15, 16, 17,
+  19:  4, 10, 16, 17,
+  20:  4, 11, 17,
+  21:  3,  9, 15, 16,
+  22:  3, 10, 16,
+  23:  1,  2,  3,  4,  5,  6,  7,
+
+Corresponding maximal traps:
+----------------------------
+   1:  8,  9, 10, 11, 12, 13, 14,
+   2:  2,  9, 15,
+   3: empty  clean
+   4: empty  clean
+   5: empty  clean
+   6: empty  clean
+   7: empty  clean
+   8:  7, 14, 20,
+   9: empty  clean
+  10: empty  clean
+  11: empty  clean
+  12: empty  clean
+  13:  6, 13, 19,
+  14: empty  clean
+  15: empty  clean
+  16: empty  clean
+  17:  5, 12, 18,
+  18: empty  clean
+  19: empty  clean
+  20:  4, 11, 17,
+  21: empty  clean
+  22:  3, 10, 16,
+  23:  1,  2,  3,  4,  5,  6,  7,
+
+SM-allocatability of net nr.  0:
+********************************
+Some minimal place sets Q with QF=FQ, but all SCSM's:
+
+   1:  8,  9, 10, 11, 12, 13, 14, SCSM 
+   2:  2,  9, 15, SCSM 
+   3:  7, 14, 20, SCSM 
+   4:  6, 13, 19, SCSM 
+   5:  5, 12, 18, SCSM 
+   6:  4, 11, 17, SCSM 
+   7:  3, 10, 16, SCSM 
+   8:  1,  2,  3,  4,  5,  6,  7, SCSM 
+ 8 minimal component(s) found.
+
+The net is state machine decomposable (SMD).
+The net is coverable by state machines (SMC).
+The net is covered by semipositive P-invariants.
+The net is structurally bounded.
+There are no proper semipositive T-surinvariants.
+
+The net is not state machine allocatable (SMA).
+A pre-place allocation allocating no SCSM:
+   1==>   1,   2==>  16,   3==>   3,   4==>   4,   5==>   5,
+   6==>   6,   7==>   7,   8==>   9,   9==>  15,  10==>  11,
+  11==>  12,  12==>  13,  13==>
