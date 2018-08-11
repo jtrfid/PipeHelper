@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Controler.h" />
     <ClInclude Include="HtmlParser.h" />
     <ClInclude Include="HtmlHelper.h" />
     <ClInclude Include="stdafx.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="XmlHelper.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Controler.cpp" />
     <ClCompile Include="HtmlParser.cpp" />
     <ClCompile Include="HtmlHelper.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-//#include <sstream>
 #include <algorithm>
 #include "tinyxml2.h"
 #include "HtmlHelper.h"
@@ -522,7 +521,7 @@ bool XmlHelper::prePost(const string &place, const string &prePost, bool pre)
 		}
 		index++;
 	}
-	Tools::vectorPrint(parts);
+	
 	// 填充数据成员: Transitions,source,target,weight
 	for (vector<string>::const_iterator it = parts.begin(); it != parts.end(); it++)
 	{
@@ -596,7 +595,7 @@ bool XmlHelper::pnt2xml(const string &pntFile, const string &outXml)
 	{
 		lineNum++;
 		getline(fin, line);
-		std::cout << line << endl;
+		// std::cout << line << endl;
 		if (lineNum == 1)  continue;               // first line: eg. P   M   PRE,POST 
 		if (line.find('@') != string::npos) break; // end flag
 
@@ -624,16 +623,16 @@ bool XmlHelper::pnt2xml(const string &pntFile, const string &outXml)
 		initialMarking.insert(make_pair(place, atoi(parts[1].c_str())));
 		capacity.insert(make_pair(place, 0)); // capacity = 0;
 	}
-	if (ret) {
-		// 排序 Places,Transitions
-		std::sort(Places.begin(), Places.end(), cmpByKey());
-		std::sort(Transitions.begin(), Transitions.end(), cmpByKey());
-	}
-
+	
 	if (!ret) {
 		std::cout << "Error format pnt file: " << pntFile << endl;
 		fin.close();
 		return false;
+	}
+	else {
+		// 排序 Places,Transitions
+		std::sort(Places.begin(), Places.end(), cmpByKey());
+		std::sort(Transitions.begin(), Transitions.end(), cmpByKey());
 	}
 
 	// 根据数据成员，生成xml文件

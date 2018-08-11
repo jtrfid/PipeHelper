@@ -4,6 +4,7 @@
 #include <string>
 #include "HtmlHelper.h"
 #include "XmlHelper.h"
+#include "Controler.h"
 
 using namespace std;
 
@@ -59,6 +60,7 @@ int main()
 	// pnt2xml();
 	XmlHelper pipe;
 	HtmlHelper pipe1;
+	Controler controler;
 	string pnt,xml,htmlFile,outFile;
 	char select = '0';
 	while (1) {
@@ -67,6 +69,7 @@ int main()
 				<< "2: Invariant Analysis.html to txt.\n"
 				<< "3: Incidence Matrix.html to txt.\n"
 				<< "4: xml to txt.\n"
+				<< "5: Siphons.\n"
 				<< "0: exit!\n";
 			cout << "\nPlease select: ";
 		}
@@ -99,6 +102,14 @@ int main()
 			if (xml.find_last_of('.xml') == string::npos) xml.append(".xml");
 			outFile = xml + ".txt";
 			pipe.readXml(xml, outFile);
+			break;
+		case '5':
+			cout << "input pnt file(include PR and PA): ";
+			pnt = "INA.pnt"; // TODO:
+			while (pnt.empty()) getline(cin, pnt);
+			if (pnt.find_last_of('.pnt') == string::npos) pnt.append(".pnt");
+			outFile = pnt + ".txt";
+			controler.comSiphons(pnt,"SESSION.ina",outFile);
 			break;
 		default:
 			break;

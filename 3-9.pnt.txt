@@ -1,0 +1,214 @@
+Places:
+elements number: 19
+P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19
+Transitions:
+elements number: 14
+T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14
+initialMarking:
+P1,6
+P10,0
+P11,0
+P12,0
+P13,0
+P14,1
+P15,1
+P16,1
+P17,1
+P18,1
+P19,1
+P2,0
+P3,0
+P4,0
+P5,0
+P6,0
+P7,0
+P8,6
+P9,0
+capacity:
+P1,0
+P10,0
+P11,0
+P12,0
+P13,0
+P14,0
+P15,0
+P16,0
+P17,0
+P18,0
+P19,0
+P2,0
+P3,0
+P4,0
+P5,0
+P6,0
+P7,0
+P8,0
+P9,0
+arc:
+id=P1 to T1 source=P1 target=T1,weight=1
+id=P10 to T11 source=P10 target=T11,weight=1
+id=P11 to T12 source=P11 target=T12,weight=1
+id=P12 to T13 source=P12 target=T13,weight=1
+id=P13 to T14 source=P13 target=T14,weight=1
+id=P14 to T3 source=P14 target=T3,weight=1
+id=P15 to T12 source=P15 target=T12,weight=1
+id=P15 to T2 source=P15 target=T2,weight=1
+id=P16 to T6 source=P16 target=T6,weight=1
+id=P17 to T10 source=P17 target=T10,weight=1
+id=P18 to T1 source=P18 target=T1,weight=1
+id=P18 to T11 source=P18 target=T11,weight=1
+id=P18 to T13 source=P18 target=T13,weight=1
+id=P18 to T4 source=P18 target=T4,weight=1
+id=P18 to T5 source=P18 target=T5,weight=1
+id=P19 to T7 source=P19 target=T7,weight=1
+id=P19 to T9 source=P19 target=T9,weight=1
+id=P2 to T2 source=P2 target=T2,weight=1
+id=P2 to T3 source=P2 target=T3,weight=1
+id=P3 to T5 source=P3 target=T5,weight=1
+id=P4 to T4 source=P4 target=T4,weight=1
+id=P5 to T6 source=P5 target=T6,weight=1
+id=P6 to T7 source=P6 target=T7,weight=1
+id=P7 to T8 source=P7 target=T8,weight=1
+id=P8 to T9 source=P8 target=T9,weight=1
+id=P9 to T10 source=P9 target=T10,weight=1
+id=T1 to P2 source=T1 target=P2,weight=1
+id=T10 to P10 source=T10 target=P10,weight=1
+id=T10 to P19 source=T10 target=P19,weight=1
+id=T11 to P11 source=T11 target=P11,weight=1
+id=T11 to P17 source=T11 target=P17,weight=1
+id=T12 to P12 source=T12 target=P12,weight=1
+id=T12 to P18 source=T12 target=P18,weight=1
+id=T13 to P13 source=T13 target=P13,weight=1
+id=T13 to P15 source=T13 target=P15,weight=1
+id=T14 to P18 source=T14 target=P18,weight=1
+id=T14 to P8 source=T14 target=P8,weight=1
+id=T2 to P18 source=T2 target=P18,weight=1
+id=T2 to P3 source=T2 target=P3,weight=1
+id=T3 to P18 source=T3 target=P18,weight=1
+id=T3 to P4 source=T3 target=P4,weight=1
+id=T4 to P14 source=T4 target=P14,weight=1
+id=T4 to P5 source=T4 target=P5,weight=1
+id=T5 to P15 source=T5 target=P15,weight=1
+id=T5 to P5 source=T5 target=P5,weight=1
+id=T6 to P18 source=T6 target=P18,weight=1
+id=T6 to P6 source=T6 target=P6,weight=1
+id=T7 to P16 source=T7 target=P16,weight=1
+id=T7 to P7 source=T7 target=P7,weight=1
+id=T8 to P1 source=T8 target=P1,weight=1
+id=T8 to P19 source=T8 target=P19,weight=1
+id=T9 to P9 source=T9 target=P9,weight=1
+Pres,Posts:
+P1 Pres: T8
+P1 Posts: T1
+P10 Pres: T10
+P10 Posts: T11
+P11 Pres: T11
+P11 Posts: T12
+P12 Pres: T12
+P12 Posts: T13
+P13 Pres: T13
+P13 Posts: T14
+P14 Pres: T4
+P14 Posts: T3
+P15 Pres: T13,T5
+P15 Posts: T12,T2
+P16 Pres: T7
+P16 Posts: T6
+P17 Pres: T11
+P17 Posts: T10
+P18 Pres: T12,T14,T2,T3,T6
+P18 Posts: T1,T11,T13,T4,T5
+P19 Pres: T10,T8
+P19 Posts: T7,T9
+P2 Pres: T1
+P2 Posts: T2,T3
+P3 Pres: T2
+P3 Posts: T5
+P4 Pres: T3
+P4 Posts: T4
+P5 Pres: T4,T5
+P5 Posts: T6
+P6 Pres: T6
+P6 Posts: T7
+P7 Pres: T7
+P7 Posts: T8
+P8 Pres: T14
+P8 Posts: T9
+P9 Pres: T9
+P9 Posts: T10
+T1 Pres: P1,P18
+T1 Posts: P2
+T10 Pres: P17,P9
+T10 Posts: P10,P19
+T11 Pres: P10,P18
+T11 Posts: P11,P17
+T12 Pres: P11,P15
+T12 Posts: P12,P18
+T13 Pres: P12,P18
+T13 Posts: P13,P15
+T14 Pres: P13
+T14 Posts: P18,P8
+T2 Pres: P15,P2
+T2 Posts: P18,P3
+T3 Pres: P14,P2
+T3 Posts: P18,P4
+T4 Pres: P18,P4
+T4 Posts: P14,P5
+T5 Pres: P18,P3
+T5 Posts: P15,P5
+T6 Pres: P16,P5
+T6 Posts: P18,P6
+T7 Pres: P19,P6
+T7 Posts: P16,P7
+T8 Pres: P7
+T8 Posts: P1,P19
+T9 Pres: P19,P8
+T9 Posts: P9
+
+PR:
+P14 P15 P16 P17 P18 P19 
+
+PA:
+P10 P11 P12 P13 P2 P3 P4 P5 P6 P7 P9 
+
+Siphons:
+1: P8 P9 P10 P11 P12 P13 P14 
+2: P2 P9 P15 
+3:[empty clean] P7 P9 P15 P16 P17 P18 P19 P20 
+4:[empty clean] P7 P10 P16 P17 P18 P19 P20 
+5:[empty clean] P7 P11 P17 P18 P19 P20 
+6:[empty clean] P7 P12 P18 P19 P20 
+7:[empty clean] P7 P13 P19 P20 
+8: P7 P14 P20 
+9:[empty clean] P6 P9 P15 P16 P17 P18 P19 
+10:[empty clean] P6 P10 P16 P17 P18 P19 
+11:[empty clean] P6 P11 P17 P18 P19 
+12:[empty clean] P6 P12 P18 P19 
+13: P6 P13 P19 
+14:[empty clean] P5 P9 P15 P16 P17 P18 
+15:[empty clean] P5 P10 P16 P17 P18 
+16:[empty clean] P5 P11 P17 P18 
+17: P5 P12 P18 
+18:[empty clean] P4 P9 P15 P16 P17 
+19:[empty clean] P4 P10 P16 P17 
+20: P4 P11 P17 
+21:[empty clean] P3 P9 P15 P16 
+22: P3 P10 P16 
+23: P1 P2 P3 P4 P5 P6 P7 
+
+ComSiphons:
+3: P10 P11 P12 P13 P2 P3 P5 P6 
+4: P11 P13 P2 P5 P6 P9 
+5: P10 P13 P2 P5 P9 
+6: P11 P13 P2 P5 P9 
+7: P9 
+9: P10 P11 P12 P13 P2 P3 P5 P7 
+10: P11 P13 P2 P5 P7 P9 
+11: P10 P13 P2 P5 P7 P9 
+12: P11 P13 P2 P5 P7 P9 
+14: P10 P11 P12 P13 P2 P3 P6 
+15: P11 P13 P2 P6 
+16: P10 P13 P2 
+18: P10 P12 P3 P6 
+19: P6 
+21: P12 P6 

@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+#include <vector>
+#include <map>
 #include "tinyxml2.h"
 
 using namespace tinyxml2;
@@ -37,7 +40,7 @@ public:
 	 ***************************************/
 	bool pnt2xml(const string &pntFile, const string &outXml);
 
-private:
+protected:
 	/**************************************
 	 * 根据数据成员，生成xml文件
 	 * const string& outXml:  output xml文件
@@ -70,7 +73,7 @@ private:
 	bool arc(XMLElement* place, ofstream &fout);
 
 	// 显示和记录PIPE输入xml文件的解析结果信息
-	void view(ofstream &fout);
+	virtual void view(ofstream &fout);
 
 	// 清除数据成员
 	void clear();

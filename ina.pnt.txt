@@ -1,444 +1,218 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!--PIPI xml file-->
-<pnml>
-    <net id="Net-One" type="P/T net">
-        <token id="Default" enabled="true" red="0" green="0" blue="0"/>
-        <place id="P1">
-            <name>
-                <value>P1</value>
-            </name>
-            <initialMarking>
-                <value>Default,10</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P2">
-            <name>
-                <value>P2</value>
-            </name>
-            <initialMarking>
-                <value>Default,0</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P3">
-            <name>
-                <value>P3</value>
-            </name>
-            <initialMarking>
-                <value>Default,0</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P4">
-            <name>
-                <value>P4</value>
-            </name>
-            <initialMarking>
-                <value>Default,0</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P5">
-            <name>
-                <value>P5</value>
-            </name>
-            <initialMarking>
-                <value>Default,10</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P6">
-            <name>
-                <value>P6</value>
-            </name>
-            <initialMarking>
-                <value>Default,0</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P7">
-            <name>
-                <value>P7</value>
-            </name>
-            <initialMarking>
-                <value>Default,0</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P8">
-            <name>
-                <value>P8</value>
-            </name>
-            <initialMarking>
-                <value>Default,0</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P9">
-            <name>
-                <value>P9</value>
-            </name>
-            <initialMarking>
-                <value>Default,2</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P10">
-            <name>
-                <value>P10</value>
-            </name>
-            <initialMarking>
-                <value>Default,1</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <place id="P11">
-            <name>
-                <value>P11</value>
-            </name>
-            <initialMarking>
-                <value>Default,1</value>
-            </initialMarking>
-            <capacity>
-                <value>0</value>
-            </capacity>
-        </place>
-        <transition id="T1">
-            <name>
-                <value>T1</value>
-            </name>
-            <priority>
-                <value>1</value>
-            </priority>
-        </transition>
-        <transition id="T2">
-            <name>
-                <value>T2</value>
-            </name>
-            <priority>
-                <value>1</value>
-            </priority>
-        </transition>
-        <transition id="T3">
-            <name>
-                <value>T3</value>
-            </name>
-            <priority>
-                <value>1</value>
-            </priority>
-        </transition>
-        <transition id="T4">
-            <name>
-                <value>T4</value>
-            </name>
-            <priority>
-                <value>1</value>
-            </priority>
-        </transition>
-        <transition id="T5">
-            <name>
-                <value>T5</value>
-            </name>
-            <priority>
-                <value>1</value>
-            </priority>
-        </transition>
-        <transition id="T6">
-            <name>
-                <value>T6</value>
-            </name>
-            <priority>
-                <value>1</value>
-            </priority>
-        </transition>
-        <transition id="T7">
-            <name>
-                <value>T7</value>
-            </name>
-            <priority>
-                <value>1</value>
-            </priority>
-        </transition>
-        <transition id="T8">
-            <name>
-                <value>T8</value>
-            </name>
-            <priority>
-                <value>1</value>
-            </priority>
-        </transition>
-        <arc id="P1 to T1" source="P1" target="T1">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P10 to T2" source="P10" target="T2">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P10 to T6" source="P10" target="T6">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P11 to T3" source="P11" target="T3">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P11 to T5" source="P11" target="T5">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P2 to T2" source="P2" target="T2">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P3 to T3" source="P3" target="T3">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P4 to T4" source="P4" target="T4">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P5 to T5" source="P5" target="T5">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P6 to T6" source="P6" target="T6">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P7 to T7" source="P7" target="T7">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P8 to T8" source="P8" target="T8">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P9 to T1" source="P9" target="T1">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="P9 to T7" source="P9" target="T7">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T1 to P2" source="T1" target="P2">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T2 to P3" source="T2" target="P3">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T2 to P9" source="T2" target="P9">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T3 to P10" source="T3" target="P10">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T3 to P4" source="T3" target="P4">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T4 to P1" source="T4" target="P1">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T4 to P11" source="T4" target="P11">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T5 to P6" source="T5" target="P6">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T6 to P11" source="T6" target="P11">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T6 to P7" source="T6" target="P7">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T7 to P10" source="T7" target="P10">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T7 to P8" source="T7" target="P8">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T8 to P5" source="T8" target="P5">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-        <arc id="T8 to P9" source="T8" target="P9">
-            <inscription>
-                <value>Default,1</value>
-            </inscription>
-            <tagged>
-                <value>false</value>
-            </tagged>
-            <type value="normal"/>
-        </arc>
-    </net>
-</pnml>
+Places:
+elements number: 20
+P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20
+Transitions:
+elements number: 14
+T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14
+initialMarking:
+P1,8
+P10,0
+P11,0
+P12,0
+P13,0
+P14,0
+P15,1
+P16,1
+P17,2
+P18,2
+P19,1
+P2,0
+P20,1
+P3,0
+P4,0
+P5,0
+P6,0
+P7,0
+P8,8
+P9,0
+capacity:
+P1,0
+P10,0
+P11,0
+P12,0
+P13,0
+P14,0
+P15,0
+P16,0
+P17,0
+P18,0
+P19,0
+P2,0
+P20,0
+P3,0
+P4,0
+P5,0
+P6,0
+P7,0
+P8,0
+P9,0
+arc:
+id=P1 to T1 source=P1 target=T1,weight=1
+id=P10 to T9 source=P10 target=T9,weight=1
+id=P11 to T10 source=P11 target=T10,weight=1
+id=P12 to T11 source=P12 target=T11,weight=1
+id=P13 to T12 source=P13 target=T12,weight=1
+id=P14 to T13 source=P14 target=T13,weight=1
+id=P15 to T1 source=P15 target=T1,weight=1
+id=P15 to T9 source=P15 target=T9,weight=1
+id=P16 to T10 source=P16 target=T10,weight=1
+id=P16 to T2 source=P16 target=T2,weight=1
+id=P17 to T11 source=P17 target=T11,weight=1
+id=P17 to T3 source=P17 target=T3,weight=1
+id=P18 to T12 source=P18 target=T12,weight=1
+id=P18 to T4 source=P18 target=T4,weight=1
+id=P19 to T13 source=P19 target=T13,weight=1
+id=P19 to T5 source=P19 target=T5,weight=1
+id=P2 to T2 source=P2 target=T2,weight=1
+id=P20 to T14 source=P20 target=T14,weight=1
+id=P20 to T6 source=P20 target=T6,weight=1
+id=P3 to T3 source=P3 target=T3,weight=1
+id=P4 to T4 source=P4 target=T4,weight=1
+id=P5 to T5 source=P5 target=T5,weight=1
+id=P6 to T6 source=P6 target=T6,weight=1
+id=P7 to T7 source=P7 target=T7,weight=1
+id=P8 to T14 source=P8 target=T14,weight=1
+id=P9 to T8 source=P9 target=T8,weight=1
+id=T1 to P2 source=T1 target=P2,weight=1
+id=T10 to P10 source=T10 target=P10,weight=1
+id=T10 to P17 source=T10 target=P17,weight=1
+id=T11 to P11 source=T11 target=P11,weight=1
+id=T11 to P18 source=T11 target=P18,weight=1
+id=T12 to P12 source=T12 target=P12,weight=1
+id=T12 to P19 source=T12 target=P19,weight=1
+id=T13 to P13 source=T13 target=P13,weight=1
+id=T13 to P20 source=T13 target=P20,weight=1
+id=T14 to P14 source=T14 target=P14,weight=1
+id=T2 to P15 source=T2 target=P15,weight=1
+id=T2 to P3 source=T2 target=P3,weight=1
+id=T3 to P16 source=T3 target=P16,weight=1
+id=T3 to P4 source=T3 target=P4,weight=1
+id=T4 to P17 source=T4 target=P17,weight=1
+id=T4 to P5 source=T4 target=P5,weight=1
+id=T5 to P18 source=T5 target=P18,weight=1
+id=T5 to P6 source=T5 target=P6,weight=1
+id=T6 to P19 source=T6 target=P19,weight=1
+id=T6 to P7 source=T6 target=P7,weight=1
+id=T7 to P1 source=T7 target=P1,weight=1
+id=T7 to P20 source=T7 target=P20,weight=1
+id=T8 to P15 source=T8 target=P15,weight=1
+id=T8 to P8 source=T8 target=P8,weight=1
+id=T9 to P16 source=T9 target=P16,weight=1
+id=T9 to P9 source=T9 target=P9,weight=1
+Pres,Posts:
+P1 Pres: T7
+P1 Posts: T1
+P10 Pres: T10
+P10 Posts: T9
+P11 Pres: T11
+P11 Posts: T10
+P12 Pres: T12
+P12 Posts: T11
+P13 Pres: T13
+P13 Posts: T12
+P14 Pres: T14
+P14 Posts: T13
+P15 Pres: T2,T8
+P15 Posts: T1,T9
+P16 Pres: T3,T9
+P16 Posts: T10,T2
+P17 Pres: T10,T4
+P17 Posts: T11,T3
+P18 Pres: T11,T5
+P18 Posts: T12,T4
+P19 Pres: T12,T6
+P19 Posts: T13,T5
+P2 Pres: T1
+P2 Posts: T2
+P20 Pres: T13,T7
+P20 Posts: T14,T6
+P3 Pres: T2
+P3 Posts: T3
+P4 Pres: T3
+P4 Posts: T4
+P5 Pres: T4
+P5 Posts: T5
+P6 Pres: T5
+P6 Posts: T6
+P7 Pres: T6
+P7 Posts: T7
+P8 Pres: T8
+P8 Posts: T14
+P9 Pres: T9
+P9 Posts: T8
+T1 Pres: P1,P15
+T1 Posts: P2
+T10 Pres: P11,P16
+T10 Posts: P10,P17
+T11 Pres: P12,P17
+T11 Posts: P11,P18
+T12 Pres: P13,P18
+T12 Posts: P12,P19
+T13 Pres: P14,P19
+T13 Posts: P13,P20
+T14 Pres: P20,P8
+T14 Posts: P14
+T2 Pres: P16,P2
+T2 Posts: P15,P3
+T3 Pres: P17,P3
+T3 Posts: P16,P4
+T4 Pres: P18,P4
+T4 Posts: P17,P5
+T5 Pres: P19,P5
+T5 Posts: P18,P6
+T6 Pres: P20,P6
+T6 Posts: P19,P7
+T7 Pres: P7
+T7 Posts: P1,P20
+T8 Pres: P9
+T8 Posts: P15,P8
+T9 Pres: P10,P15
+T9 Posts: P16,P9
+
+PR:
+P15 P16 P17 P18 P19 P20 
+
+PA:
+P10 P11 P12 P13 P14 P2 P3 P4 P5 P6 P7 P9 
+
+Siphons:
+1: P8 P9 P10 P11 P12 P13 P14 
+2: P2 P9 P15 
+3:[empty clean] P7 P9 P15 P16 P17 P18 P19 P20 
+4:[empty clean] P7 P10 P16 P17 P18 P19 P20 
+5:[empty clean] P7 P11 P17 P18 P19 P20 
+6:[empty clean] P7 P12 P18 P19 P20 
+7:[empty clean] P7 P13 P19 P20 
+8: P7 P14 P20 
+9:[empty clean] P6 P9 P15 P16 P17 P18 P19 
+10:[empty clean] P6 P10 P16 P17 P18 P19 
+11:[empty clean] P6 P11 P17 P18 P19 
+12:[empty clean] P6 P12 P18 P19 
+13: P6 P13 P19 
+14:[empty clean] P5 P9 P15 P16 P17 P18 
+15:[empty clean] P5 P10 P16 P17 P18 
+16:[empty clean] P5 P11 P17 P18 
+17: P5 P12 P18 
+18:[empty clean] P4 P9 P15 P16 P17 
+19:[empty clean] P4 P10 P16 P17 
+20: P4 P11 P17 
+21:[empty clean] P3 P9 P15 P16 
+22: P3 P10 P16 
+23: P1 P2 P3 P4 P5 P6 P7 
+
+ComSiphons:
+3: P10 P11 P12 P13 P14 P2 P3 P4 P5 P6 
+4: P11 P12 P13 P14 P3 P4 P5 P6 
+5: P12 P13 P14 P4 P5 P6 
+6: P13 P14 P5 P6 
+7: P14 P6 
+9: P10 P11 P12 P13 P2 P3 P4 P5 
+10: P11 P12 P13 P3 P4 P5 
+11: P12 P13 P4 P5 
+12: P13 P5 
+14: P10 P11 P12 P2 P3 P4 
+15: P11 P12 P3 P4 
+16: P12 P4 
+18: P10 P11 P2 P3 
+19: P11 P3 
+21: P10 P2 

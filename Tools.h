@@ -115,6 +115,8 @@ public:
 	 *******************************************/
 	static bool isSpaceLine(string &str)
 	{
+		if (str.empty()) return true;
+
 		int count = 0;
 		// 删除前缀空格
 		for (string::iterator it = str.begin(); it != str.end(); it++)
@@ -158,6 +160,63 @@ public:
 
 		if (str.empty()) return true;
 		else return false;
+	}
+
+	/*************************************
+	 * 去除前后缀空格('\n','\r','\t',' ')
+	 *************************************/
+	static string& trim(string& s)
+	{
+		if (s.empty()) return s;
+		// 去掉s的前缀空格
+		string::size_type pos = 0;
+		for (auto it = s.begin(); it < s.end(); it++) {
+			if (*it == '\n' || *it == '\r' || *it == '\t' || *it == ' ') pos++;
+			else break;
+		}
+		s = s.substr(pos);
+
+		// 删除后缀空格
+		while (1)
+		{
+			char end = s.back();
+			if (end == '\n' || end == '\r' || end == '\t' || end == ' ') 
+				s.erase(prev(s.end()));
+			else break;
+		}
+		return s;
+	}
+
+	/*************************************
+	 * 首先去除s的前后缀空格，
+	 * 然后提取以指定分隔符隔开的子字符串至sVector.
+	 * 并且保证各个子串前后无空格
+	 * 空串或去除前后缀的空格后是空串，直接返回
+	 *************************************/
+	static vector<string>& split(const string& s, vector<string>& sVector, char delimit)
+	{
+		string str(s);
+		if (s.empty()) return sVector;
+		trim(str);
+		if (str.empty()) return sVector;
+		string::size_type pos1 = 0, pos2 = 0;
+		while (1)
+		{
+			pos2 = str.find(delimit,pos1); // 从pos1开始找分隔符
+			if (pos2 == string::npos)  break; // 未找到分隔符
+			string sub = str.substr(pos1, pos2 - pos1);
+			trim(sub);
+			if (sub.empty()) std::cout << "Waring, have empty sub string in " << s << endl;
+			sVector.push_back(sub);
+			pos1 = pos2 + 1;
+		}
+		// 添加最后一个
+		string sub = str.substr(pos1);
+		trim(sub);
+		if (sub.empty()) std::cout << "Waring, have empty splited substring in " << s << endl;
+		sVector.push_back(sub);
+
+		return sVector;
 	}
 };
 
