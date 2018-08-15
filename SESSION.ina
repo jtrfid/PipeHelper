@@ -7,7 +7,7 @@ Current net options are:
     strategy   : single transitions
     line length: 80
 
-Net read from 20p14t.pnt
+Net read from 20p14tfir.pnt
 Information on elementary structural properties:
 Current name options are:
      transition names not to be written 
@@ -21,7 +21,7 @@ The net is not subconservative.
 The net is not a state machine.
 The net is not free choice.
 The net is not extended free choice.
-The net is extended simple.
+The net is not extended simple.
 The net is not safe.
 The net is not live and safe.
 The net is marked.
@@ -33,120 +33,375 @@ The net has no transitions without pre-place.
 The net has no transitions without post-place.
 The net has no places without pre-transition.
 The net has no places without post-transition.
-Maximal in/out-degree:  2
+Maximal in/out-degree:  6
 The net is connected.
 The net is strongly connected.
 ORD HOM NBM PUR CSV SCF CON SC  Ft0 tF0 Fp0 pF0 MG  SM  FC  EFC ES 
- Y   Y   Y   Y   N   N   Y   Y   N   N   N   N   N   N   N   N   Y  
+ Y   Y   Y   Y   N   N   Y   Y   N   N   N   N   N   N   N   N   N  
 DTP SMC SMD SMA CPI CTI  B  SB  REV DSt BSt DTr DCF  L   LV L&S 
  ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   ?   N  
-Current analysis options are:
-     no symmetrical reduction 
-     no stubborn reduction 
-     no depth restriction 
-     do not use a 'bad' predicate 
-Computation of the reachability graph
-States generated: 1748
-Arcs generated: 5146
-
-Capacities needed:
-Place  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
- Cap:  8  1  1  2  2  1  1  8  1  1  2  2  1  1  1  1  2  2  1  1
-Dead states:
-       30, 163, 289, 290, 292, 327, 346, 355, 365, 373, 376, 386, 390, 391,
-      409, 432, 443, 454, 460, 469, 505, 525, 528, 535, 538, 540, 541, 572,
-      584, 616, 710, 854,
-Number of dead states found: 32
-The net has dead reachable states.
-The net is not live.
-The deadlock-trap-property is not valid.
-The net is not reversible (resetable).
-The net has no dead transitions at the initial marking.
-The net is not live, if dead transitions are ignored.
-The net is bounded.
-ORD HOM NBM PUR CSV SCF CON SC  Ft0 tF0 Fp0 pF0 MG  SM  FC  EFC ES 
- Y   Y   Y   Y   N   N   Y   Y   N   N   N   N   N   N   N   N   Y  
-DTP SMC SMD SMA CPI CTI  B  SB  REV DSt BSt DTr DCF  L   LV L&S 
- N   ?   ?   ?   ?   ?   Y   ?   N   Y   ?   N   ?   N   N   N  
 Current name options are:
      transition names not to be written 
      place names not to be written 
 Structural liveness properties of net nr. 0.                :
-processed candidates: 178
-There are  23 minimal deadlocks:
+processed candidates: 3652
+There are  158 minimal deadlocks:
 -------------------------------
    1:  8,  9, 10, 11, 12, 13, 14,
-   2:  2,  9, 15,
-   3:  7,  9, 15, 16, 17, 18, 19, 20,
-   4:  7, 10, 16, 17, 18, 19, 20,
-   5:  7, 11, 17, 18, 19, 20,
-   6:  7, 12, 18, 19, 20,
-   7:  7, 13, 19, 20,
-   8:  7, 14, 20,
-   9:  6,  9, 15, 16, 17, 18, 19,
-  10:  6, 10, 16, 17, 18, 19,
-  11:  6, 11, 17, 18, 19,
-  12:  6, 12, 18, 19,
-  13:  6, 13, 19,
-  14:  5,  9, 15, 16, 17, 18,
-  15:  5, 10, 16, 17, 18,
-  16:  5, 11, 17, 18,
-  17:  5, 12, 18,
-  18:  4,  9, 15, 16, 17,
-  19:  4, 10, 16, 17,
-  20:  4, 11, 17,
-  21:  3,  9, 15, 16,
-  22:  3, 10, 16,
-  23:  1,  2,  3,  4,  5,  6,  7,
+   2:  6, 11, 19, 23, 26, 28,
+   3:  6, 10, 11, 19, 23, 26, 27,
+   4:  6, 10, 11, 19, 23, 25, 29,
+   5:  6, 12, 19, 23, 26,
+   6:  6, 11, 12, 19, 23, 25,
+   7:  6, 10, 11, 12, 19, 23, 24,
+   8:  6, 11, 19, 22, 28,
+   9:  6, 10, 11, 19, 22, 27,
+  10:  6, 10, 11, 19, 21, 29,
+  11:  5, 11, 23, 26, 28,
+  12:  5, 10, 11, 23, 26, 27,
+  13:  5, 10, 11, 23, 25, 29,
+  14:  5,  6, 11, 18, 26, 28,
+  15:  5,  6, 10, 11, 18, 26, 27,
+  16:  5,  6, 10, 11, 18, 25, 29,
+  17:  5, 13, 23,
+  18:  5,  6, 11, 13, 18, 22, 28,
+  19:  5,  6, 10, 11, 13, 18, 22, 27,
+  20:  5,  6, 10, 11, 13, 18, 21, 29,
+  21:  6, 10, 11, 16, 19, 20, 29,
+  22:  6, 14, 19,
+  23:  4, 12, 26,
+  24:  6, 10, 11, 16, 19, 23, 26, 29,
+  25:  4, 11, 26, 28,
+  26:  4, 10, 11, 26, 27,
+  27:  6, 11, 17, 19, 23, 25, 28,
+  28:  6, 10, 11, 17, 19, 23, 25, 27,
+  29:  6, 10, 11, 16, 19, 23, 24, 29,
+  30:  6, 10, 11, 17, 19, 23, 24, 28,
+  31:  6, 10, 11, 17, 19, 23, 24, 27,
+  32:  6, 13, 19, 23,
+  33:  4,  6, 10, 11, 19, 22, 25, 29,
+  34:  6, 10, 11, 16, 19, 22, 29,
+  35:  6, 10, 11, 17, 19, 21, 27,
+  36:  6, 10, 11, 17, 19, 20, 28,
+  37:  6, 10, 11, 17, 19, 20, 27,
+  38:  4,  6, 11, 12, 19, 22, 25,
+  39:  4,  6, 10, 11, 12, 19, 22, 24,
+  40:  6, 12, 13, 19, 22,
+  41:  6, 11, 12, 13, 19, 21,
+  42:  6, 10, 11, 12, 13, 19, 20,
+  43:  4,  5, 12, 13, 22,
+  44:  3, 11, 28,
+  45:  3,  6, 10, 11, 19, 23, 25, 27,
+  46:  6, 10, 11, 18, 19, 22, 25, 29,
+  47:  6, 10, 11, 18, 19, 20, 25, 29,
+  48:  5, 10, 11, 21, 23, 26, 29,
+  49:  3,  5, 10, 11, 23, 25, 27,
+  50:  5, 10, 11, 21, 23, 24, 29,
+  51:  5,  6, 10, 11, 18, 21, 26, 29,
+  52:  3,  5,  6, 10, 11, 18, 25, 27,
+  53:  5,  6, 10, 11, 18, 21, 24, 29,
+  54:  5, 12, 23, 26,
+  55:  5, 11, 12, 23, 25,
+  56:  5, 10, 11, 12, 23, 24,
+  57:  5,  6, 12, 18, 26,
+  58:  5,  6, 11, 12, 18, 25,
+  59:  5,  6, 10, 11, 12, 18, 24,
+  60:  3,  4, 11, 12, 25,
+  61:  3,  6, 10, 11, 19, 21, 27,
+  62:  6, 12, 18, 19, 22, 26,
+  63:  6, 11, 12, 18, 19, 22, 25,
+  64:  6, 10, 11, 12, 18, 19, 22, 24,
+  65:  6, 11, 12, 18, 19, 21, 26,
+  66:  6, 11, 12, 18, 19, 21, 25,
+  67:  6, 10, 11, 12, 18, 19, 21, 24,
+  68:  3,  4,  6, 10, 11, 12, 19, 21, 24,
+  69:  6, 10, 11, 12, 18, 19, 20, 26,
+  70:  6, 10, 11, 12, 18, 19, 20, 25,
+  71:  6, 10, 11, 12, 18, 19, 20, 24,
+  72:  5,  6, 10, 11, 16, 23, 26, 29,
+  73:  5,  6, 10, 11, 16, 23, 24, 29,
+  74:  5,  6, 10, 11, 16, 18, 26, 29,
+  75:  5,  6, 10, 11, 16, 18, 24, 29,
+  76:  5,  6, 10, 11, 13, 16, 18, 22, 29,
+  77:  3,  5,  6, 10, 11, 13, 18, 21, 27,
+  78:  5,  6, 10, 11, 13, 16, 18, 20, 29,
+  79:  5,  6, 13, 14, 18,
+  80:  5,  6, 12, 13, 18, 22,
+  81:  5,  6, 11, 12, 13, 18, 21,
+  82:  5,  6, 10, 11, 12, 13, 18, 20,
+  83:  3,  4,  5, 11, 12, 13, 21,
+  84:  2, 10, 11, 29,
+  85:  2,  3, 10, 11, 27,
+  86:  6, 11, 18, 19, 21, 26, 28,
+  87:  6, 11, 17, 19, 21, 28,
+  88:  6, 10, 11, 18, 19, 21, 26, 27,
+  89:  4,  5, 11, 22, 28,
+  90:  4,  5, 10, 11, 22, 27,
+  91:  4,  5,  6, 11, 17, 28,
+  92:  4,  5,  6, 10, 11, 17, 27,
+  93:  5, 11, 22, 23, 25, 28,
+  94:  5,  6, 11, 17, 23, 25, 28,
+  95:  5, 10, 11, 22, 23, 25, 27,
+  96:  5,  6, 10, 11, 17, 23, 25, 27,
+  97:  5, 10, 11, 22, 23, 24, 28,
+  98:  5,  6, 10, 11, 17, 23, 24, 28,
+  99:  5, 10, 11, 22, 23, 24, 27,
+ 100:  5,  6, 10, 11, 17, 23, 24, 27,
+ 101:  5,  6, 11, 18, 22, 25, 28,
+ 102:  5,  6, 11, 17, 18, 25, 28,
+ 103:  5,  6, 10, 11, 18, 22, 25, 27,
+ 104:  5,  6, 10, 11, 17, 18, 25, 27,
+ 105:  5,  6, 10, 11, 18, 22, 24, 28,
+ 106:  5,  6, 10, 11, 17, 18, 24, 28,
+ 107:  5,  6, 10, 11, 18, 22, 24, 27,
+ 108:  5,  6, 10, 11, 17, 18, 24, 27,
+ 109:  4,  5, 11, 12, 22, 25,
+ 110:  4,  5, 10, 11, 12, 22, 24,
+ 111:  4,  5,  6, 11, 12, 17, 25,
+ 112:  4,  5,  6, 10, 11, 12, 17, 24,
+ 113:  2,  3,  4, 10, 11, 12, 24,
+ 114:  6, 10, 11, 18, 19, 20, 26, 28,
+ 115:  6, 10, 11, 18, 19, 20, 26, 27,
+ 116:  4,  6, 11, 12, 17, 19, 21, 25,
+ 117:  4,  6, 10, 11, 12, 17, 19, 21, 24,
+ 118:  4,  6, 10, 11, 12, 17, 19, 20, 25,
+ 119:  4,  6, 10, 11, 12, 17, 19, 20, 24,
+ 120:  5,  6, 11, 13, 17, 18, 21, 28,
+ 121:  5,  6, 10, 11, 13, 17, 18, 21, 27,
+ 122:  5,  6, 10, 11, 13, 17, 18, 20, 28,
+ 123:  5,  6, 10, 11, 13, 17, 18, 20, 27,
+ 124:  4,  5,  6, 11, 12, 13, 17, 21,
+ 125:  4,  5,  6, 10, 11, 12, 13, 17, 20,
+ 126:  4,  5,  6, 12, 13, 14, 17,
+ 127:  2,  3,  4,  5, 10, 11, 12, 13, 20,
+ 128:  2,  3,  4,  5,  6, 10, 11, 12, 13, 14, 15,
+ 129:  3,  6, 10, 11, 16, 19, 23, 24, 27,
+ 130:  4, 10, 11, 25, 26, 29,
+ 131:  4,  6, 10, 11, 17, 19, 20, 25, 29,
+ 132:  3,  4, 10, 11, 25, 29,
+ 133:  3,  6, 10, 11, 18, 19, 20, 25, 27,
+ 134:  3,  4, 10, 11, 25, 27,
+ 135:  3,  6, 10, 11, 16, 19, 20, 27,
+ 136:  3,  4,  6, 10, 11, 12, 16, 19, 20, 24,
+ 137:  3,  5, 10, 11, 21, 23, 24, 27,
+ 138:  3,  5,  6, 10, 11, 16, 23, 24, 27,
+ 139:  3,  5,  6, 10, 11, 18, 21, 24, 27,
+ 140:  3,  5,  6, 10, 11, 16, 18, 24, 27,
+ 141:  3,  5,  6, 10, 11, 13, 16, 18, 20, 27,
+ 142:  4,  5, 10, 11, 21, 26, 29,
+ 143:  4,  5,  6, 10, 11, 16, 26, 29,
+ 144:  4,  5, 10, 11, 22, 25, 29,
+ 145:  4,  5, 10, 11, 21, 22, 29,
+ 146:  4,  5,  6, 10, 11, 16, 22, 29,
+ 147:  4,  5,  6, 10, 11, 17, 25, 29,
+ 148:  4,  5,  6, 10, 11, 17, 21, 29,
+ 149:  4,  5,  6, 10, 11, 16, 17, 29,
+ 150:  3,  4,  5, 10, 11, 21, 29,
+ 151:  3,  4,  5, 10, 11, 21, 27,
+ 152:  3,  4,  5, 10, 11, 12, 21, 24,
+ 153:  3,  4,  5,  6, 10, 11, 16, 29,
+ 154:  3,  4,  5,  6, 10, 11, 16, 27,
+ 155:  3,  4,  5,  6, 10, 11, 12, 16, 24,
+ 156:  3,  4,  5,  6, 10, 11, 12, 13, 16, 20,
+ 157:  3,  4,  5,  6, 11, 12, 13, 14, 16,
+ 158:  1,  2,  3,  4,  5,  6,  7,
 
 Corresponding maximal traps:
 ----------------------------
    1:  8,  9, 10, 11, 12, 13, 14,
-   2:  2,  9, 15,
+   2: empty  clean
    3: empty  clean
    4: empty  clean
    5: empty  clean
    6: empty  clean
    7: empty  clean
-   8:  7, 14, 20,
+   8: empty  clean
    9: empty  clean
   10: empty  clean
   11: empty  clean
   12: empty  clean
-  13:  6, 13, 19,
+  13: empty  clean
   14: empty  clean
   15: empty  clean
   16: empty  clean
-  17:  5, 12, 18,
+  17:  5, 13, 23,
   18: empty  clean
   19: empty  clean
-  20:  4, 11, 17,
+  20: empty  clean
   21: empty  clean
-  22:  3, 10, 16,
-  23:  1,  2,  3,  4,  5,  6,  7,
+  22:  6, 14, 19,
+  23:  4, 12, 26,
+  24: empty  clean
+  25: empty  clean
+  26: empty  clean
+  27: empty  clean
+  28: empty  clean
+  29: empty  clean
+  30: empty  clean
+  31: empty  clean
+  32: empty  clean
+  33: empty  clean
+  34: empty  clean
+  35: empty  clean
+  36: empty  clean
+  37: empty  clean
+  38: empty  clean
+  39: empty  clean
+  40: empty  clean
+  41: empty  clean
+  42: empty  clean
+  43:  4,  5, 12, 13, 22,
+  44:  3, 11, 28,
+  45: empty  clean
+  46: empty  clean
+  47: empty  clean
+  48: empty  clean
+  49: empty  clean
+  50: empty  clean
+  51: empty  clean
+  52: empty  clean
+  53: empty  clean
+  54: empty  clean
+  55: empty  clean
+  56: empty  clean
+  57: empty  clean
+  58: empty  clean
+  59: empty  clean
+  60:  3,  4, 11, 12, 25,
+  61: empty  clean
+  62: empty  clean
+  63: empty  clean
+  64: empty  clean
+  65: empty  clean
+  66: empty  clean
+  67: empty  clean
+  68: empty  clean
+  69: empty  clean
+  70: empty  clean
+  71: empty  clean
+  72: empty  clean
+  73: empty  clean
+  74: empty  clean
+  75: empty  clean
+  76: empty  clean
+  77: empty  clean
+  78: empty  clean
+  79:  5,  6, 13, 14, 18,
+  80: empty  clean
+  81: empty  clean
+  82: empty  clean
+  83:  3,  4,  5, 11, 12, 13, 21,
+  84:  2, 10, 11, 29,
+  85:  2,  3, 10, 11, 27,
+  86: empty  clean
+  87: empty  clean
+  88: empty  clean
+  89: empty  clean
+  90: empty  clean
+  91: empty  clean
+  92: empty  clean
+  93: empty  clean
+  94: empty  clean
+  95: empty  clean
+  96: empty  clean
+  97: empty  clean
+  98: empty  clean
+  99: empty  clean
+ 100: empty  clean
+ 101: empty  clean
+ 102: empty  clean
+ 103: empty  clean
+ 104: empty  clean
+ 105: empty  clean
+ 106: empty  clean
+ 107: empty  clean
+ 108: empty  clean
+ 109: empty  clean
+ 110: empty  clean
+ 111: empty  clean
+ 112: empty  clean
+ 113:  2,  3,  4, 10, 11, 12, 24,
+ 114: empty  clean
+ 115: empty  clean
+ 116: empty  clean
+ 117: empty  clean
+ 118: empty  clean
+ 119: empty  clean
+ 120: empty  clean
+ 121: empty  clean
+ 122: empty  clean
+ 123: empty  clean
+ 124: empty  clean
+ 125: empty  clean
+ 126:  4,  5,  6, 12, 13, 14, 17,
+ 127:  2,  3,  4,  5, 10, 11, 12, 13, 20,
+ 128:  2,  3,  4,  5,  6, 10, 11, 12, 13, 14, 15,
+ 129: empty  clean
+ 130: empty  clean
+ 131: empty  clean
+ 132: empty  clean
+ 133: empty  clean
+ 134: empty  clean
+ 135: empty  clean
+ 136: empty  clean
+ 137: empty  clean
+ 138: empty  clean
+ 139: empty  clean
+ 140: empty  clean
+ 141: empty  clean
+ 142: empty  clean
+ 143: empty  clean
+ 144: empty  clean
+ 145: empty  clean
+ 146: empty  clean
+ 147: empty  clean
+ 148: empty  clean
+ 149: empty  clean
+ 150: empty  clean
+ 151: empty  clean
+ 152: empty  clean
+ 153: empty  clean
+ 154: empty  clean
+ 155: empty  clean
+ 156: empty  clean
+ 157:  3,  4,  5,  6, 11, 12, 13, 14, 16,
+ 158:  1,  2,  3,  4,  5,  6,  7,
+The deadlock-trap-property is not valid.
 
 SM-allocatability of net nr.  0:
 ********************************
 Some minimal place sets Q with QF=FQ, but all SCSM's:
 
    1:  8,  9, 10, 11, 12, 13, 14, SCSM 
-   2:  2,  9, 15, SCSM 
-   3:  7, 14, 20, SCSM 
-   4:  6, 13, 19, SCSM 
-   5:  5, 12, 18, SCSM 
-   6:  4, 11, 17, SCSM 
-   7:  3, 10, 16, SCSM 
-   8:  1,  2,  3,  4,  5,  6,  7, SCSM 
- 8 minimal component(s) found.
+   2:  5, 13, 23, SCSM 
+   3:  6, 14, 19, SCSM 
+   4:  4, 12, 26, SCSM 
+   5:  4,  5, 12, 13, 22, SCSM 
+   6:  3, 11, 28, SCSM 
+   7:  3,  4, 11, 12, 25, SCSM 
+   8:  5,  6, 13, 14, 18, SCSM 
+   9:  3,  4,  5, 11, 12, 13, 21, SCSM 
+  10:  2, 10, 11, 29, SCSM 
+  11:  2,  3, 10, 11, 27, SCSM 
+  12:  2,  3,  4, 10, 11, 12, 24, SCSM 
+  13:  4,  5,  6, 12, 13, 14, 17, SCSM 
+  14:  2,  3,  4,  5, 10, 11, 12, 13, 20, SCSM 
+  15:  2,  3,  4,  5,  6, 10, 11, 12, 13, 14, 15, SCSM 
+  16:  3,  4,  5,  6, 11, 12, 13, 14, 16, SCSM 
+  17:  1,  2,  3,  4,  5,  6,  7, SCSM 
+ 17 minimal component(s) found.
 
 The net is state machine decomposable (SMD).
 The net is coverable by state machines (SMC).
 The net is covered by semipositive P-invariants.
 The net is structurally bounded.
+The net is bounded.
 There are no proper semipositive T-surinvariants.
 
 The net is not state machine allocatable (SMA).
 A pre-place allocation allocating no SCSM:
-   1==>   1,   2==>  16,   3==>   3,   4==>   4,   5==>   5,
-   6==>   6,   7==>   7,   8==>   9,   9==>  15,  10==>  11,
-  11==>  12,  12==>  13,  13==>
+   1==>  15,   2==>   2,   3==>   3,   4==>   4,   5==>   5,
+   6==>   6,   7==>   7,   8==>   9,   9==>  10,  10==>  11,
+  11==>  27,  12==>  13,  13==>  14,  14==>   8,
+The net is not covered by 1-token SCSM's.
+ORD HOM NBM PUR 

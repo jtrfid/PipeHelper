@@ -19,14 +19,364 @@ Controler::~Controler()
 }
 
 /************************************
-* 信标,补集等
-* const string& pntFile: 有资源库所和工序库所信息的pnt文件
-* const string& SESSION.ina 文件
-* const string& outFile: outpu file
-* 成功返回true，否则返回false
-************************************/
+ * 由.pnt和SESSION.ina文件计算控制器，生成新的含有控制器的pnt文件
+ * const string& infoFile: information file信息文件
+ * const string& pntCPFile: 生成新的含有控制器的pnt文件
+ * 成功返回true，否则返回false
+ ************************************/
+bool Controler::pntCP(const string& pntFile, const string& SESSIONina, const string& infoFile, const string& pntCPFile)
+{
+	clear();
+	bool ret = true;
+	ofstream fout(infoFile);
+	ofstream fpnt(pntCPFile);
+
+	//由.pnt和SESSION.ina求信标补集
+	ret = comSiphons(pntFile, SESSIONina, infoFile);
+	// 添加控制器，填充数据成员controlerPlace和initialMarkingCP
+	addControler();
+	//从controlerPlace中筛选合法控制器,填充数据成员legalControler
+	legalRule();
+
+	fpnt << "p  m   pre,pos"<< endl;
+	for (auto it = Places.begin(); it != Places.end(); it++)
+	{
+		// 舍去原有PR
+		auto ft = find(PR.begin(), PR.end(), *it);
+		if (ft != PR.end()) continue;  // *it存在于PR中
+
+		string place = (*it).substr(1);
+		int marking = initialMarking[*it];
+		fpnt << place << " " << marking << "   ";
+		
+		set<string> pres = ptNodes[*it].Pres;
+		for (string s : pres)
+		{
+			fpnt << s.substr(1);
+			string arcId;
+			createArcId(*it, s, arcId);
+			int w = weight[arcId];
+			if (w > 1) fpnt << ":" << w;
+			fpnt << " ";
+		}
+		fpnt << ',';
+		set<string> posts = ptNodes[*it].Posts;
+		for (string s : posts)
+		{
+			fpnt << s.substr(1);
+			string arcId;
+			createArcId(*it, s, arcId);
+			int w = weight[arcId];
+			if (w > 1) fpnt << ":" << w;
+			fpnt << " ";
+		}
+		fpnt << endl;
+	}
+	// controler
+	for (auto it = legalControler.begin(); it != legalControler.end(); it++)
+	{
+		fpnt << it->second.id << " ";
+		fpnt << initialMarkingCP[it->second.name];
+		fpnt << "    ";
+		set<string> pres = it->second.Pres;
+		for (string s : pres) fpnt << s.substr(1) << " ";
+		fpnt << ',';
+		set<string> posts = it->second.Posts;
+		for (string s : posts) 	fpnt << s.substr(1) << " ";
+		fpnt << endl;
+	}
+	fpnt << "@" << endl;
+	// PR, 剔除legalControler中的Place
+	fpnt << "PR ";
+	for (auto it = legalControler.begin(); it != legalControler.end(); it++)
+	{
+		if(it != prev(legalControler.end())) fpnt << it->second.id << ",";
+		else fpnt << it->second.id << endl;
+	}
+	fpnt << "PA ";
+	for (auto it = PA.begin(); it != PA.end(); it++)
+	{
+		if (it != prev(PA.end())) fpnt << *it << ",";
+		else fpnt << *it << endl;
+	}
+	////////////////////显示和记录
+	view(fout);
+
+	std::cout << "\nControler (" << controlerPlace.size() << "/" << legalControler.size() << ")" << endl;
+	fout << "\nControler (" << controlerPlace.size() << "/" << legalControler.size() << ")" << endl;
+	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)
+	{
+		std::cout << it->first << "(" << it->second.name << "[" << initialMarkingCP[it->second.name] << "])";
+		fout << it->first << "(" << it->second.name << "[" << initialMarkingCP[it->second.name] << "])";
+		if(legalControler.find(it->first) == legalControler.end()) { // 没找到
+			std::cout << " [removed!] ";
+			fout << " [removed!] ";
+		}
+
+		std::cout << "\nPres: ";
+		fout << "\nPres: ";
+		for (auto it1 = it->second.Pres.begin(); it1 != it->second.Pres.end(); it1++)
+		{
+			if (it1 != prev(it->second.Pres.end())) {
+				std::cout << *it1 << ",";
+				fout << *it1 << ",";
+			}
+			else {
+				std::cout << *it1;
+				fout << *it1;
+			}
+		}
+		std::cout << "\nPosts: ";
+		fout << "\nPosts: ";
+		for (auto it1 = it->second.Posts.begin(); it1 != it->second.Posts.end(); it1++)
+		{
+			if (it1 != prev(it->second.Posts.end())) {
+				std::cout << *it1 << ",";
+				fout << *it1 << ",";
+			}
+			else {
+				std::cout << *it1;
+				fout << *it1;
+			}
+		}
+		std::cout << endl;
+		fout << endl;
+	}
+	std::cout << "\ninitialMarkingCP:" << endl;
+	fout << "\ninitialMarkingCP:" << endl;
+	for (auto it = initialMarkingCP.begin(); it != initialMarkingCP.end(); it++)
+	{
+		std::cout << it->first << "(" << it->second << "),";
+		fout << it->first << "(" << it->second << "),";
+	}
+	std::cout << endl;
+	fout << endl;
+
+	// emptyCP
+	std::cout << "\nemptyCP(" << emptyCP.size() << ")" << endl;
+	fout << "\nemptyCP(" << emptyCP.size() << ")" << endl;
+	for (auto it = emptyCP.begin(); it != emptyCP.end(); it++)
+	{
+		std::cout << it->first << " Siphon:";
+		fout << it->first << " Siphon:";
+		Siphon s = Siphons[it->first];
+		vector<string> p = s.siphon;
+		for (string s : p) {
+			std::cout << s << " ";
+			fout << s << " ";
+		}
+		std::cout << endl;
+		fout << endl;
+
+		std::cout << it->first << " comSiphon:";
+		fout << it->first << " comSiphon:";
+		set<string> com = ComSiphons[it->first];
+		for (string s : com) {
+			std::cout << s << " ";
+			fout << s << " ";
+		}
+		std::cout << endl;
+		fout << endl;
+	}
+		
+	//sameCP
+	std::cout << "\nsameCP" << endl;
+	fout << "\nsameCP" << endl;
+	for (auto it = sameCP.begin(); it != sameCP.end(); it++)
+	{
+		std::cout << "legalControler(" << it->first << "): ";
+		fout << "legalControler(" << it->first << "): ";
+		ptNode pc = legalControler[it->first];
+		std::cout << pc.name << " " << initialMarkingCP[pc.name] << "  ";
+		fout << pc.name << " " << initialMarkingCP[pc.name] << "  ";
+		for (string s : pc.Pres) {
+			std::cout << s << " ";
+			fout << s << " ";
+		}
+		std::cout << ",";
+		fout << ",";
+		for (string s : pc.Posts) {
+			std::cout << s << " ";
+			fout << s << " ";
+		}
+		std::cout << endl;
+		fout << endl;
+
+		std::cout << it->first << " same siphon:";
+		fout << it->first << " same siphon:";
+		Siphon s = Siphons[it->first];
+		vector<string> p = s.siphon;
+		for (string s : p) {
+			std::cout << s << " ";
+			fout << s << " ";
+		}
+		std::cout << endl;
+		fout << endl;
+		std::cout << it->first << " comSiphon, marking(" << initialMarkingCP[controlerPlace[it->first].name] << "): ";
+		fout << it->first << " comSiphon, marking(" << initialMarkingCP[controlerPlace[it->first].name] << "): ";
+		set<string> com = ComSiphons[it->first];
+		for (string s : com) {
+			std::cout << s << " ";
+			fout << s << " ";
+		}
+		std::cout << endl;
+		fout << endl;
+
+		vector<int> same = it->second;
+		for (auto it1 = same.begin(); it1 != same.end(); it1++)
+		{
+			std::cout << *it1 << " comSiphon, marking(" << initialMarkingCP[controlerPlace[*it1].name] << "): ";
+			fout << *it1 << " comSiphon, marking(" << initialMarkingCP[controlerPlace[*it1].name] << "): ";
+			set<string> com = ComSiphons[*it1];
+			for (string s : com) {
+				std::cout << s << " ";
+				fout << s << " ";
+			}
+			std::cout << endl;
+			fout << endl;
+		}
+		std::cout << "-----------------------" << endl;
+		fout << "-----------------------" << endl;
+	}
+	cout << endl;
+	fout << endl;
+	if (ret) {
+		std::cout << "OK, read " << pntFile << "," << SESSIONina << endl;
+		std::cout << "OK, output " << infoFile << "," << pntCPFile << endl;
+		fout << "OK, read " << pntFile << "," << SESSIONina << endl;
+		fout << "OK, output " << infoFile << "," << pntCPFile << endl;
+	}
+	else {
+		std::cout << "Error, read " << pntFile << "," << SESSIONina << endl;
+		std::cout << "Error, output " << infoFile << "," << pntCPFile << endl;
+		fout << "Error, read " << pntFile << "," << SESSIONina << endl;
+		fout << "Error, output " << infoFile << "," << pntCPFile << endl;
+	}
+
+	fpnt.close();
+	fout.close();
+	return ret;
+}
+
+// 添加控制器，填充数据成员controlerPlace和initialMarkingCP
+bool Controler::addControler()
+{
+	int placeNum = getMaxPlaceNum();
+	int i = 1;
+	// 填充数据成员controlerPlace和initialMarkingCP
+	for (auto it = ComSiphons.begin(); it != ComSiphons.end(); it++, i++) 
+	{
+		set<string> comSiphon = it->second; // 信标补集
+		set<string> pres, posts; // 信标补集的前后置集
+		for (string s : comSiphon)
+		{
+			pres.insert(ptNodes[s].Pres.begin(), ptNodes[s].Pres.end());
+			posts.insert(ptNodes[s].Posts.begin(), ptNodes[s].Posts.end());
+		}
+		set<string> pres1, posts1;  // pres1 = pres - posts, posts1 = post - pres
+	    std::set_difference(pres.begin(), pres.end(), posts.begin(), posts.end(), inserter(pres1, pres1.end()));
+	    std::set_difference(posts.begin(), posts.end(), pres.begin(), pres.end(), inserter(posts1, posts1.end()));
+		// 控制库所的前置集是posts1，后置集是pres1
+		ptNode cp;
+		cp.type = PLACE;
+		cp.id = placeNum + i; // 编号规则：原有Places后顺序排列
+		cp.name.assign("P").append(to_string(cp.id));
+		cp.Pres = posts1;
+		cp.Posts = pres1;
+		controlerPlace.insert(make_pair(it->first,cp));
+
+        // 控制库所marking是被清空信标的marking总和 - 1
+		int marking = 0;
+		for (string s : Siphons[it->first].siphon)
+		{
+			marking += initialMarking[s];
+		}
+		initialMarkingCP.insert(make_pair(cp.name, marking - 1));
+	}
+
+	return true;
+}
+
+/*********************************************
+ * 从controlerPlace中筛选合法控制器,填充数据成员legalControler,emptyCP,sameCP
+ * 筛选规则：
+ * (1) 剔除Pres和Posts为空的controlerPlace
+ * (2) Pres和Posts一致的controlerPlace，取marking最小者。
+ ***********************************************/
+void Controler::legalRule()
+{
+	struct result
+	{
+		int id;       // controlerPlace key
+		ptNode place; // controlerPlace value
+		int marking;  // initialMarkingCP;
+	};
+	set<int> samed; // 应经有相同的controlerPlace key值,记录是否已比较
+	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)
+	{
+		if (samed.find(it->first) != samed.end())
+			continue; // 已经有相同值，记录在案，不用比较了。
+
+		//map<int, result, greater<int>> same;  // key: marking,降序排列
+		map<int, result, less<int>> same;  // key: marking，升序排列，默认
+		set<string> pres = it->second.Pres;
+		set<string> posts = it->second.Posts; 
+		if (pres.empty() || posts.empty()) {
+			// 填充emptyCP
+			emptyCP.insert(make_pair(it->first, it->second));
+			continue; // 空值继续
+		}
+		for (auto it1 = next(it); it1 != controlerPlace.end(); it1++)
+		{
+			
+			set<string> pres1 = it1->second.Pres;
+			set<string> posts1 = it1->second.Posts;
+			if (Tools::sameSet(pres, pres1) && Tools::sameSet(posts, posts1))
+			{
+				samed.insert(it1->first); 
+				// 填充sameCP
+				if (sameCP.find(it->first) == sameCP.end()) // 不存在
+				{
+					vector<int> v;
+					v.push_back(it1->first);
+					sameCP.insert(make_pair(it->first, v));
+				}
+				else // 存在
+				{
+					vector<int> v = sameCP[it->first];
+					v.push_back(it1->first);
+					sameCP[it->first] = v;
+				}
+				
+				// 相同marking不被插入
+				result r;
+				int m, m1;
+				m = initialMarkingCP[it->second.name];
+				m1 = initialMarkingCP[it1->second.name];
+				r.marking = (m < m1) ? m : m1;
+				r.id = (m < m1) ? it->first : it1->first;
+				r.place = (m < m1) ? it->second : it1->second;
+				same.insert(make_pair(r.marking,r));
+			}
+		}
+		// 填充legalControler
+		if (!same.empty()) {
+			result r = same.begin()->second; // 按照marking升序排列，第一个same必是所求
+			legalControler.insert(make_pair(r.id, r.place));
+		}
+	}
+}
+
+/************************************
+ * 由.pnt和SESSION.ina求信标补集
+ * const string& pntFile: 有资源库所和工序库所信息的pnt文件
+ * const string& SESSION.ina 文件
+ * const string& outFile: outpu file
+ * 成功返回true，否则返回false
+ ************************************/
 bool Controler::comSiphons(const string& pntFile, const string& SESSIONina, const string& outFile)
 {
+	clear();
 	bool ret = true;
 	ofstream fout(outFile);
 	// read 有资源库所和工序库所信息的pnt文件，填充数据成员
@@ -47,13 +397,27 @@ bool Controler::comSiphons(const string& pntFile, const string& SESSIONina, cons
 
 	view(fout);
 
-	if (!ret) cout << "\nError, in function comSiphons()." << endl;
+	cout << endl;
+	fout << endl;
+	if (ret) {
+		std::cout << "OK, read " << pntFile << "," << SESSIONina << endl;
+		std::cout << "OK, output " << outFile << endl;
+		fout << "OK, read " << pntFile << "," << SESSIONina << endl;
+		fout << "OK, output " << outFile << endl;
+	}
+	else {
+		std::cout << "Error, read " << pntFile << "," << SESSIONina << endl;
+		std::cout << "Error, output " << outFile << endl;
+		fout << "Error, read " << pntFile << "," << SESSIONina << endl;
+		fout << "Error, output " << outFile << endl;
+	}
+
 	fout.close();
 	return ret;
 }
 
 /************************************
- * 信标补集
+ * 根据信标和PR参数求信标补集
  * 输入参数:
  * const vector<string>& siphons: 信标集
  * const vector<string>& Pr: 资源库所集
@@ -129,6 +493,21 @@ bool Controler::holder(const string& resource, set<string>& H)
 	return ret;
 }
 
+// 清除数据成员
+void Controler::clear()
+{
+	XmlHelper::clear();
+	PR.clear();
+	PA.clear();
+	ptNodes.clear();
+	Siphons.clear();
+	ComSiphons.clear();
+	controlerPlace.clear();
+	initialMarkingCP.clear();
+	emptyCP.clear();
+	sameCP.clear();
+}
+
 // 显示和记录信息
 void Controler::view(ofstream &fout)
 {
@@ -137,8 +516,8 @@ void Controler::view(ofstream &fout)
 	fout << "Pres,Posts:" << endl;
 	for (auto it = ptNodes.begin(); it != ptNodes.end(); it++)
 	{
-		std::cout << it->first << " Pres: ";
-		fout << it->first << " Pres: ";
+		std::cout << it->first << endl << " Pres: ";
+		fout << it->first << endl << " Pres: ";
 		for (auto it1 = it->second.Pres.begin(); it1 != it->second.Pres.end(); it1++)
 		{
 			if (it1 != prev(it->second.Pres.end())) {
@@ -152,8 +531,8 @@ void Controler::view(ofstream &fout)
 		}
 		std::cout << endl;
 		fout << endl;
-		std::cout << it->first << " Posts: ";
-		fout << it->first << " Posts: ";
+		std::cout << " Posts: ";
+		fout << " Posts: ";
 		for (auto it1 = it->second.Posts.begin(); it1 != it->second.Posts.end(); it1++)
 		{
 			if (it1 != prev(it->second.Posts.end())) {
@@ -246,7 +625,7 @@ bool Controler::prePre(const string& ptName,set<string> &prePre)
 }
 
 /************************************
- * 填充数据成员Pres，Posts
+ * 填充数据成员ptNodesy以及node成员Pres，Posts
  ************************************/
 void Controler::PrePosts()
 {
@@ -339,7 +718,7 @@ bool Controler::readPnt(const string &pntFile)
 		// place 添加前缀'P',生成"P1","P2",...
 		string place("P");
 		place.append(parts[0]);
-		// 处理pre,post
+		// 处理pre,post，填充数据成员: Transitions,source,target,weight
 		prePost(place, pre, true);
 		prePost(place, post, false);
 		// 填充数据成员: place,initialMarking,capacity
@@ -356,10 +735,16 @@ bool Controler::readPnt(const string &pntFile)
 	while (!fin.eof())
 	{
 		getline(fin, line);
+		if (line.empty()) continue; // 空行继续，允许文件末尾有空行
 		if (!PRPA(line)) { 
 			ret = false; 
 			break; 
 		}
+	}
+
+	if (PR.empty() || PA.empty()) {
+		std::cout << "Error format pnt file, none PR or PA: " << pntFile << endl;
+		ret = false;
 	}
 
 	if (!ret) {
@@ -367,15 +752,12 @@ bool Controler::readPnt(const string &pntFile)
 		fin.close();
 		return false;
 	}
-	else {
-		// 排序 Places,Transitions
-		std::sort(Places.begin(), Places.end(), cmpByKey());
-		std::sort(Transitions.begin(), Transitions.end(), cmpByKey());
-	}
-
-	//填充数据成员Pres，Posts
+	
+	// 排序 Places,Transitions
+	std::sort(Places.begin(), Places.end(), cmpByKey());
+	std::sort(Transitions.begin(), Transitions.end(), cmpByKey());
+	//填充数据成员ptNodesy以及node成员Pres，Posts
 	PrePosts();
-
 	fin.close();
 	return true;
 }

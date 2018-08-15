@@ -40,6 +40,13 @@ public:
 	 ***************************************/
 	bool pnt2xml(const string &pntFile, const string &outXml);
 
+	// 根据source和target生成arcId, eg. "P10 to T2" source="P10" target="T2"
+	string& createArcId(const string &source, const string &target, string &arcId) 
+	{
+		arcId.assign(source).append(" to ").append(target);
+		return arcId;
+	}
+
 protected:
 	/**************************************
 	 * 根据数据成员，生成xml文件
@@ -76,7 +83,7 @@ protected:
 	virtual void view(ofstream &fout);
 
 	// 清除数据成员
-	void clear();
+	virtual void clear();
 
 	// save place element, ignore <graphics> 
 	void place(XMLDocument &doc, XMLNode* net);
@@ -94,7 +101,7 @@ protected:
 	bool parts3(const string &line, string parts[]);
 
 	/**********************************************************
-	 * 分析pre,post, 填充数据成员
+	 * 分析pre,post, 填充数据成员: Transitions,source,target,weight
 	 * pre,post: eg. 1:3 4 5 6:7 注：程序解释要求':'前后无空格
 	 * 参数：
 	 * const string &place：  pre,post行的place
@@ -107,8 +114,11 @@ protected:
 	vector<string> Transitions; //transition id
 	map<string, int> initialMarking;  // key: place id
 	map<string, int> capacity;  // key: place id
-	map<string, string> source; // key: arc id
-	map<string, string> target; // key: arc id
-	map<string, int> weight;    // key: arc id
+	// key: arc id, eg. "P10 to T2" source="P10" target="T2"
+	map<string, string> source; 
+	// key: arc id, eg. "P10 to T2" source="P10" target="T2"
+	map<string, string> target; 
+	// key: arc id, eg. "P10 to T2" source="P10" target="T2"
+	map<string, int> weight; 
 };
 

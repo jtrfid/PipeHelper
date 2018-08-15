@@ -154,16 +154,20 @@ void XmlHelper::view(ofstream &fout)
 	fout << "initialMarking:" << endl;
 	for (map<string, int>::const_iterator it = initialMarking.begin(); it != initialMarking.end(); it++)
 	{
-		std::cout << it->first << "," << it->second << endl;
-		fout << it->first << "," << it->second << endl;
+		std::cout << it->first << "(" << it->second << "),";
+		fout << it->first << "(" << it->second << "),";
 	}
+	std::cout << endl;
+	fout << endl;
 	std::cout << "capacity:" << endl;
 	fout << "capacity:" << endl;
 	for (map<string, int>::const_iterator it = capacity.begin(); it != capacity.end(); it++)
 	{
-		std::cout << it->first << "," << it->second << endl;
-		fout << it->first << "," << it->second << endl;
+		std::cout << it->first << "(" << it->second << "),";
+		fout << it->first << "(" << it->second << "),";
 	}
+	std::cout << endl;
+	fout << endl;
 	std::cout << "arc:" << endl;
 	fout << "arc:" << endl;
 	for (map<string, string>::const_iterator it = source.begin(); it != source.end(); it++)
@@ -484,7 +488,7 @@ bool XmlHelper::parts3(const string &line,string parts[])
 }
 
 /**********************************************************
- * 分析pre,post, 填充数据成员
+ * 分析pre,post, 填充数据成员: Transitions,source,target,weight
  * pre,post: eg. 1:3 4 5 6:7 注：程序解释要求':'前后无空格
  * 参数：
  * const string &place：  pre,post行的place 

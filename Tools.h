@@ -2,6 +2,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<set>
 
 using namespace std;
 
@@ -217,6 +218,17 @@ public:
 		sVector.push_back(sub);
 
 		return sVector;
+	}
+
+	// s1和s2集合是否相同
+	static bool sameSet(const set<string>& s1, const set<string>& s2)
+	{
+		if (s1.size() != s2.size()) return false;
+		for (auto it = s1.begin(); it != s1.end(); it++)
+		{
+			if(s2.count(*it)==0) return false;
+		}
+		return true;
 	}
 };
 

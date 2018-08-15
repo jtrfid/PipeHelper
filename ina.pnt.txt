@@ -1,51 +1,13 @@
 Places:
-elements number: 20
-P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20
+elements number: 29
+P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20,P21,P22,P23,P24,P25,P26,P27,P28,P29
 Transitions:
 elements number: 14
 T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14
 initialMarking:
-P1,8
-P10,0
-P11,0
-P12,0
-P13,0
-P14,0
-P15,1
-P16,1
-P17,2
-P18,2
-P19,1
-P2,0
-P20,1
-P3,0
-P4,0
-P5,0
-P6,0
-P7,0
-P8,8
-P9,0
+P1(8),P10(0),P11(0),P12(0),P13(0),P14(0),P15(7),P16(6),P17(5),P18(3),P19(1),P2(0),P20(6),P21(5),P22(4),P23(2),P24(5),P25(4),P26(3),P27(3),P28(2),P29(1),P3(0),P4(0),P5(0),P6(0),P7(0),P8(8),P9(0),
 capacity:
-P1,0
-P10,0
-P11,0
-P12,0
-P13,0
-P14,0
-P15,0
-P16,0
-P17,0
-P18,0
-P19,0
-P2,0
-P20,0
-P3,0
-P4,0
-P5,0
-P6,0
-P7,0
-P8,0
-P9,0
+P1(0),P10(0),P11(0),P12(0),P13(0),P14(0),P15(0),P16(0),P17(0),P18(0),P19(0),P2(0),P20(0),P21(0),P22(0),P23(0),P24(0),P25(0),P26(0),P27(0),P28(0),P29(0),P3(0),P4(0),P5(0),P6(0),P7(0),P8(0),P9(0),
 arc:
 id=P1 to T1 source=P1 target=T1,weight=1
 id=P10 to T9 source=P10 target=T9,weight=1
@@ -54,18 +16,36 @@ id=P12 to T11 source=P12 target=T11,weight=1
 id=P13 to T12 source=P13 target=T12,weight=1
 id=P14 to T13 source=P14 target=T13,weight=1
 id=P15 to T1 source=P15 target=T1,weight=1
-id=P15 to T9 source=P15 target=T9,weight=1
-id=P16 to T10 source=P16 target=T10,weight=1
+id=P15 to T14 source=P15 target=T14,weight=1
+id=P16 to T14 source=P16 target=T14,weight=1
 id=P16 to T2 source=P16 target=T2,weight=1
-id=P17 to T11 source=P17 target=T11,weight=1
+id=P17 to T14 source=P17 target=T14,weight=1
 id=P17 to T3 source=P17 target=T3,weight=1
-id=P18 to T12 source=P18 target=T12,weight=1
+id=P18 to T14 source=P18 target=T14,weight=1
 id=P18 to T4 source=P18 target=T4,weight=1
-id=P19 to T13 source=P19 target=T13,weight=1
+id=P19 to T14 source=P19 target=T14,weight=1
 id=P19 to T5 source=P19 target=T5,weight=1
 id=P2 to T2 source=P2 target=T2,weight=1
-id=P20 to T14 source=P20 target=T14,weight=1
-id=P20 to T6 source=P20 target=T6,weight=1
+id=P20 to T1 source=P20 target=T1,weight=1
+id=P20 to T13 source=P20 target=T13,weight=1
+id=P21 to T13 source=P21 target=T13,weight=1
+id=P21 to T2 source=P21 target=T2,weight=1
+id=P22 to T13 source=P22 target=T13,weight=1
+id=P22 to T3 source=P22 target=T3,weight=1
+id=P23 to T13 source=P23 target=T13,weight=1
+id=P23 to T4 source=P23 target=T4,weight=1
+id=P24 to T1 source=P24 target=T1,weight=1
+id=P24 to T12 source=P24 target=T12,weight=1
+id=P25 to T12 source=P25 target=T12,weight=1
+id=P25 to T2 source=P25 target=T2,weight=1
+id=P26 to T12 source=P26 target=T12,weight=1
+id=P26 to T3 source=P26 target=T3,weight=1
+id=P27 to T1 source=P27 target=T1,weight=1
+id=P27 to T11 source=P27 target=T11,weight=1
+id=P28 to T11 source=P28 target=T11,weight=1
+id=P28 to T2 source=P28 target=T2,weight=1
+id=P29 to T1 source=P29 target=T1,weight=1
+id=P29 to T11 source=P29 target=T11,weight=1
 id=P3 to T3 source=P3 target=T3,weight=1
 id=P4 to T4 source=P4 target=T4,weight=1
 id=P5 to T5 source=P5 target=T5,weight=1
@@ -75,144 +55,1122 @@ id=P8 to T14 source=P8 target=T14,weight=1
 id=P9 to T8 source=P9 target=T8,weight=1
 id=T1 to P2 source=T1 target=P2,weight=1
 id=T10 to P10 source=T10 target=P10,weight=1
-id=T10 to P17 source=T10 target=P17,weight=1
+id=T10 to P16 source=T10 target=P16,weight=1
+id=T10 to P21 source=T10 target=P21,weight=1
+id=T10 to P25 source=T10 target=P25,weight=1
+id=T10 to P28 source=T10 target=P28,weight=1
 id=T11 to P11 source=T11 target=P11,weight=1
-id=T11 to P18 source=T11 target=P18,weight=1
+id=T11 to P17 source=T11 target=P17,weight=1
+id=T11 to P22 source=T11 target=P22,weight=1
+id=T11 to P26 source=T11 target=P26,weight=1
 id=T12 to P12 source=T12 target=P12,weight=1
-id=T12 to P19 source=T12 target=P19,weight=1
+id=T12 to P18 source=T12 target=P18,weight=1
+id=T12 to P23 source=T12 target=P23,weight=1
 id=T13 to P13 source=T13 target=P13,weight=1
-id=T13 to P20 source=T13 target=P20,weight=1
+id=T13 to P19 source=T13 target=P19,weight=1
 id=T14 to P14 source=T14 target=P14,weight=1
-id=T2 to P15 source=T2 target=P15,weight=1
+id=T2 to P29 source=T2 target=P29,weight=1
 id=T2 to P3 source=T2 target=P3,weight=1
-id=T3 to P16 source=T3 target=P16,weight=1
+id=T3 to P27 source=T3 target=P27,weight=1
+id=T3 to P28 source=T3 target=P28,weight=1
 id=T3 to P4 source=T3 target=P4,weight=1
-id=T4 to P17 source=T4 target=P17,weight=1
+id=T4 to P24 source=T4 target=P24,weight=1
+id=T4 to P25 source=T4 target=P25,weight=1
+id=T4 to P26 source=T4 target=P26,weight=1
 id=T4 to P5 source=T4 target=P5,weight=1
-id=T5 to P18 source=T5 target=P18,weight=1
+id=T5 to P20 source=T5 target=P20,weight=1
+id=T5 to P21 source=T5 target=P21,weight=1
+id=T5 to P22 source=T5 target=P22,weight=1
+id=T5 to P23 source=T5 target=P23,weight=1
 id=T5 to P6 source=T5 target=P6,weight=1
+id=T6 to P15 source=T6 target=P15,weight=1
+id=T6 to P16 source=T6 target=P16,weight=1
+id=T6 to P17 source=T6 target=P17,weight=1
+id=T6 to P18 source=T6 target=P18,weight=1
 id=T6 to P19 source=T6 target=P19,weight=1
 id=T6 to P7 source=T6 target=P7,weight=1
 id=T7 to P1 source=T7 target=P1,weight=1
-id=T7 to P20 source=T7 target=P20,weight=1
-id=T8 to P15 source=T8 target=P15,weight=1
 id=T8 to P8 source=T8 target=P8,weight=1
-id=T9 to P16 source=T9 target=P16,weight=1
+id=T9 to P15 source=T9 target=P15,weight=1
+id=T9 to P20 source=T9 target=P20,weight=1
+id=T9 to P24 source=T9 target=P24,weight=1
+id=T9 to P27 source=T9 target=P27,weight=1
+id=T9 to P29 source=T9 target=P29,weight=1
 id=T9 to P9 source=T9 target=P9,weight=1
 Pres,Posts:
-P1 Pres: T7
-P1 Posts: T1
-P10 Pres: T10
-P10 Posts: T9
-P11 Pres: T11
-P11 Posts: T10
-P12 Pres: T12
-P12 Posts: T11
-P13 Pres: T13
-P13 Posts: T12
-P14 Pres: T14
-P14 Posts: T13
-P15 Pres: T2,T8
-P15 Posts: T1,T9
-P16 Pres: T3,T9
-P16 Posts: T10,T2
-P17 Pres: T10,T4
-P17 Posts: T11,T3
-P18 Pres: T11,T5
-P18 Posts: T12,T4
-P19 Pres: T12,T6
-P19 Posts: T13,T5
-P2 Pres: T1
-P2 Posts: T2
-P20 Pres: T13,T7
-P20 Posts: T14,T6
-P3 Pres: T2
-P3 Posts: T3
-P4 Pres: T3
-P4 Posts: T4
-P5 Pres: T4
-P5 Posts: T5
-P6 Pres: T5
-P6 Posts: T6
-P7 Pres: T6
-P7 Posts: T7
-P8 Pres: T8
-P8 Posts: T14
-P9 Pres: T9
-P9 Posts: T8
-T1 Pres: P1,P15
-T1 Posts: P2
-T10 Pres: P11,P16
-T10 Posts: P10,P17
-T11 Pres: P12,P17
-T11 Posts: P11,P18
-T12 Pres: P13,P18
-T12 Posts: P12,P19
-T13 Pres: P14,P19
-T13 Posts: P13,P20
-T14 Pres: P20,P8
-T14 Posts: P14
-T2 Pres: P16,P2
-T2 Posts: P15,P3
-T3 Pres: P17,P3
-T3 Posts: P16,P4
-T4 Pres: P18,P4
-T4 Posts: P17,P5
-T5 Pres: P19,P5
-T5 Posts: P18,P6
-T6 Pres: P20,P6
-T6 Posts: P19,P7
-T7 Pres: P7
-T7 Posts: P1,P20
-T8 Pres: P9
-T8 Posts: P15,P8
-T9 Pres: P10,P15
-T9 Posts: P16,P9
+P1
+ Pres: T7
+ Posts: T1
+P10
+ Pres: T10
+ Posts: T9
+P11
+ Pres: T11
+ Posts: T10
+P12
+ Pres: T12
+ Posts: T11
+P13
+ Pres: T13
+ Posts: T12
+P14
+ Pres: T14
+ Posts: T13
+P15
+ Pres: T6,T9
+ Posts: T1,T14
+P16
+ Pres: T10,T6
+ Posts: T14,T2
+P17
+ Pres: T11,T6
+ Posts: T14,T3
+P18
+ Pres: T12,T6
+ Posts: T14,T4
+P19
+ Pres: T13,T6
+ Posts: T14,T5
+P2
+ Pres: T1
+ Posts: T2
+P20
+ Pres: T5,T9
+ Posts: T1,T13
+P21
+ Pres: T10,T5
+ Posts: T13,T2
+P22
+ Pres: T11,T5
+ Posts: T13,T3
+P23
+ Pres: T12,T5
+ Posts: T13,T4
+P24
+ Pres: T4,T9
+ Posts: T1,T12
+P25
+ Pres: T10,T4
+ Posts: T12,T2
+P26
+ Pres: T11,T4
+ Posts: T12,T3
+P27
+ Pres: T3,T9
+ Posts: T1,T11
+P28
+ Pres: T10,T3
+ Posts: T11,T2
+P29
+ Pres: T2,T9
+ Posts: T1,T11
+P3
+ Pres: T2
+ Posts: T3
+P4
+ Pres: T3
+ Posts: T4
+P5
+ Pres: T4
+ Posts: T5
+P6
+ Pres: T5
+ Posts: T6
+P7
+ Pres: T6
+ Posts: T7
+P8
+ Pres: T8
+ Posts: T14
+P9
+ Pres: T9
+ Posts: T8
+T1
+ Pres: P1,P15,P20,P24,P27,P29
+ Posts: P2
+T10
+ Pres: P11
+ Posts: P10,P16,P21,P25,P28
+T11
+ Pres: P12,P27,P28,P29
+ Posts: P11,P17,P22,P26
+T12
+ Pres: P13,P24,P25,P26
+ Posts: P12,P18,P23
+T13
+ Pres: P14,P20,P21,P22,P23
+ Posts: P13,P19
+T14
+ Pres: P15,P16,P17,P18,P19,P8
+ Posts: P14
+T2
+ Pres: P16,P2,P21,P25,P28
+ Posts: P29,P3
+T3
+ Pres: P17,P22,P26,P3
+ Posts: P27,P28,P4
+T4
+ Pres: P18,P23,P4
+ Posts: P24,P25,P26,P5
+T5
+ Pres: P19,P5
+ Posts: P20,P21,P22,P23,P6
+T6
+ Pres: P6
+ Posts: P15,P16,P17,P18,P19,P7
+T7
+ Pres: P7
+ Posts: P1
+T8
+ Pres: P9
+ Posts: P8
+T9
+ Pres: P10
+ Posts: P15,P20,P24,P27,P29,P9
 
 PR:
-P15 P16 P17 P18 P19 P20 
+P15 P16 P17 P18 P19 P20 P21 P22 P23 P24 P25 P26 P27 P28 P29 
 
 PA:
 P10 P11 P12 P13 P14 P2 P3 P4 P5 P6 P7 P9 
 
 Siphons:
 1: P8 P9 P10 P11 P12 P13 P14 
-2: P2 P9 P15 
-3:[empty clean] P7 P9 P15 P16 P17 P18 P19 P20 
-4:[empty clean] P7 P10 P16 P17 P18 P19 P20 
-5:[empty clean] P7 P11 P17 P18 P19 P20 
-6:[empty clean] P7 P12 P18 P19 P20 
-7:[empty clean] P7 P13 P19 P20 
-8: P7 P14 P20 
-9:[empty clean] P6 P9 P15 P16 P17 P18 P19 
-10:[empty clean] P6 P10 P16 P17 P18 P19 
-11:[empty clean] P6 P11 P17 P18 P19 
-12:[empty clean] P6 P12 P18 P19 
-13: P6 P13 P19 
-14:[empty clean] P5 P9 P15 P16 P17 P18 
-15:[empty clean] P5 P10 P16 P17 P18 
-16:[empty clean] P5 P11 P17 P18 
-17: P5 P12 P18 
-18:[empty clean] P4 P9 P15 P16 P17 
-19:[empty clean] P4 P10 P16 P17 
-20: P4 P11 P17 
-21:[empty clean] P3 P9 P15 P16 
-22: P3 P10 P16 
-23: P1 P2 P3 P4 P5 P6 P7 
+2:[empty clean] P6 P11 P19 P23 P26 P28 
+3:[empty clean] P6 P10 P11 P19 P23 P26 P27 
+4:[empty clean] P6 P10 P11 P19 P23 P25 P29 
+5:[empty clean] P6 P12 P19 P23 P26 
+6:[empty clean] P6 P11 P12 P19 P23 P25 
+7:[empty clean] P6 P10 P11 P12 P19 P23 P24 
+8:[empty clean] P6 P11 P19 P22 P28 
+9:[empty clean] P6 P10 P11 P19 P22 P27 
+10:[empty clean] P6 P10 P11 P19 P21 P29 
+11:[empty clean] P5 P11 P23 P26 P28 
+12:[empty clean] P5 P10 P11 P23 P26 P27 
+13:[empty clean] P5 P10 P11 P23 P25 P29 
+14:[empty clean] P5 P6 P11 P18 P26 P28 
+15:[empty clean] P5 P6 P10 P11 P18 P26 P27 
+16:[empty clean] P5 P6 P10 P11 P18 P25 P29 
+17: P5 P13 P23 
+18:[empty clean] P5 P6 P11 P13 P18 P22 P28 
+19:[empty clean] P5 P6 P10 P11 P13 P18 P22 P27 
+20:[empty clean] P5 P6 P10 P11 P13 P18 P21 P29 
+21:[empty clean] P6 P10 P11 P16 P19 P20 P29 
+22: P6 P14 P19 
+23: P4 P12 P26 
+24:[empty clean] P6 P10 P11 P16 P19 P23 P26 P29 
+25:[empty clean] P4 P11 P26 P28 
+26:[empty clean] P4 P10 P11 P26 P27 
+27:[empty clean] P6 P11 P17 P19 P23 P25 P28 
+28:[empty clean] P6 P10 P11 P17 P19 P23 P25 P27 
+29:[empty clean] P6 P10 P11 P16 P19 P23 P24 P29 
+30:[empty clean] P6 P10 P11 P17 P19 P23 P24 P28 
+31:[empty clean] P6 P10 P11 P17 P19 P23 P24 P27 
+32:[empty clean] P6 P13 P19 P23 
+33:[empty clean] P4 P6 P10 P11 P19 P22 P25 P29 
+34:[empty clean] P6 P10 P11 P16 P19 P22 P29 
+35:[empty clean] P6 P10 P11 P17 P19 P21 P27 
+36:[empty clean] P6 P10 P11 P17 P19 P20 P28 
+37:[empty clean] P6 P10 P11 P17 P19 P20 P27 
+38:[empty clean] P4 P6 P11 P12 P19 P22 P25 
+39:[empty clean] P4 P6 P10 P11 P12 P19 P22 P24 
+40:[empty clean] P6 P12 P13 P19 P22 
+41:[empty clean] P6 P11 P12 P13 P19 P21 
+42:[empty clean] P6 P10 P11 P12 P13 P19 P20 
+43: P4 P5 P12 P13 P22 
+44: P3 P11 P28 
+45:[empty clean] P3 P6 P10 P11 P19 P23 P25 P27 
+46:[empty clean] P6 P10 P11 P18 P19 P22 P25 P29 
+47:[empty clean] P6 P10 P11 P18 P19 P20 P25 P29 
+48:[empty clean] P5 P10 P11 P21 P23 P26 P29 
+49:[empty clean] P3 P5 P10 P11 P23 P25 P27 
+50:[empty clean] P5 P10 P11 P21 P23 P24 P29 
+51:[empty clean] P5 P6 P10 P11 P18 P21 P26 P29 
+52:[empty clean] P3 P5 P6 P10 P11 P18 P25 P27 
+53:[empty clean] P5 P6 P10 P11 P18 P21 P24 P29 
+54:[empty clean] P5 P12 P23 P26 
+55:[empty clean] P5 P11 P12 P23 P25 
+56:[empty clean] P5 P10 P11 P12 P23 P24 
+57:[empty clean] P5 P6 P12 P18 P26 
+58:[empty clean] P5 P6 P11 P12 P18 P25 
+59:[empty clean] P5 P6 P10 P11 P12 P18 P24 
+60: P3 P4 P11 P12 P25 
+61:[empty clean] P3 P6 P10 P11 P19 P21 P27 
+62:[empty clean] P6 P12 P18 P19 P22 P26 
+63:[empty clean] P6 P11 P12 P18 P19 P22 P25 
+64:[empty clean] P6 P10 P11 P12 P18 P19 P22 P24 
+65:[empty clean] P6 P11 P12 P18 P19 P21 P26 
+66:[empty clean] P6 P11 P12 P18 P19 P21 P25 
+67:[empty clean] P6 P10 P11 P12 P18 P19 P21 P24 
+68:[empty clean] P3 P4 P6 P10 P11 P12 P19 P21 P24 
+69:[empty clean] P6 P10 P11 P12 P18 P19 P20 P26 
+70:[empty clean] P6 P10 P11 P12 P18 P19 P20 P25 
+71:[empty clean] P6 P10 P11 P12 P18 P19 P20 P24 
+72:[empty clean] P5 P6 P10 P11 P16 P23 P26 P29 
+73:[empty clean] P5 P6 P10 P11 P16 P23 P24 P29 
+74:[empty clean] P5 P6 P10 P11 P16 P18 P26 P29 
+75:[empty clean] P5 P6 P10 P11 P16 P18 P24 P29 
+76:[empty clean] P5 P6 P10 P11 P13 P16 P18 P22 P29 
+77:[empty clean] P3 P5 P6 P10 P11 P13 P18 P21 P27 
+78:[empty clean] P5 P6 P10 P11 P13 P16 P18 P20 P29 
+79: P5 P6 P13 P14 P18 
+80:[empty clean] P5 P6 P12 P13 P18 P22 
+81:[empty clean] P5 P6 P11 P12 P13 P18 P21 
+82:[empty clean] P5 P6 P10 P11 P12 P13 P18 P20 
+83: P3 P4 P5 P11 P12 P13 P21 
+84: P2 P10 P11 P29 
+85: P2 P3 P10 P11 P27 
+86:[empty clean] P6 P11 P18 P19 P21 P26 P28 
+87:[empty clean] P6 P11 P17 P19 P21 P28 
+88:[empty clean] P6 P10 P11 P18 P19 P21 P26 P27 
+89:[empty clean] P4 P5 P11 P22 P28 
+90:[empty clean] P4 P5 P10 P11 P22 P27 
+91:[empty clean] P4 P5 P6 P11 P17 P28 
+92:[empty clean] P4 P5 P6 P10 P11 P17 P27 
+93:[empty clean] P5 P11 P22 P23 P25 P28 
+94:[empty clean] P5 P6 P11 P17 P23 P25 P28 
+95:[empty clean] P5 P10 P11 P22 P23 P25 P27 
+96:[empty clean] P5 P6 P10 P11 P17 P23 P25 P27 
+97:[empty clean] P5 P10 P11 P22 P23 P24 P28 
+98:[empty clean] P5 P6 P10 P11 P17 P23 P24 P28 
+99:[empty clean] P5 P10 P11 P22 P23 P24 P27 
+100:[empty clean] P5 P6 P10 P11 P17 P23 P24 P27 
+101:[empty clean] P5 P6 P11 P18 P22 P25 P28 
+102:[empty clean] P5 P6 P11 P17 P18 P25 P28 
+103:[empty clean] P5 P6 P10 P11 P18 P22 P25 P27 
+104:[empty clean] P5 P6 P10 P11 P17 P18 P25 P27 
+105:[empty clean] P5 P6 P10 P11 P18 P22 P24 P28 
+106:[empty clean] P5 P6 P10 P11 P17 P18 P24 P28 
+107:[empty clean] P5 P6 P10 P11 P18 P22 P24 P27 
+108:[empty clean] P5 P6 P10 P11 P17 P18 P24 P27 
+109:[empty clean] P4 P5 P11 P12 P22 P25 
+110:[empty clean] P4 P5 P10 P11 P12 P22 P24 
+111:[empty clean] P4 P5 P6 P11 P12 P17 P25 
+112:[empty clean] P4 P5 P6 P10 P11 P12 P17 P24 
+113: P2 P3 P4 P10 P11 P12 P24 
+114:[empty clean] P6 P10 P11 P18 P19 P20 P26 P28 
+115:[empty clean] P6 P10 P11 P18 P19 P20 P26 P27 
+116:[empty clean] P4 P6 P11 P12 P17 P19 P21 P25 
+117:[empty clean] P4 P6 P10 P11 P12 P17 P19 P21 P24 
+118:[empty clean] P4 P6 P10 P11 P12 P17 P19 P20 P25 
+119:[empty clean] P4 P6 P10 P11 P12 P17 P19 P20 P24 
+120:[empty clean] P5 P6 P11 P13 P17 P18 P21 P28 
+121:[empty clean] P5 P6 P10 P11 P13 P17 P18 P21 P27 
+122:[empty clean] P5 P6 P10 P11 P13 P17 P18 P20 P28 
+123:[empty clean] P5 P6 P10 P11 P13 P17 P18 P20 P27 
+124:[empty clean] P4 P5 P6 P11 P12 P13 P17 P21 
+125:[empty clean] P4 P5 P6 P10 P11 P12 P13 P17 P20 
+126: P4 P5 P6 P12 P13 P14 P17 
+127: P2 P3 P4 P5 P10 P11 P12 P13 P20 
+128: P2 P3 P4 P5 P6 P10 P11 P12 P13 P14 P15 
+129:[empty clean] P3 P6 P10 P11 P16 P19 P23 P24 P27 
+130:[empty clean] P4 P10 P11 P25 P26 P29 
+131:[empty clean] P4 P6 P10 P11 P17 P19 P20 P25 P29 
+132:[empty clean] P3 P4 P10 P11 P25 P29 
+133:[empty clean] P3 P6 P10 P11 P18 P19 P20 P25 P27 
+134:[empty clean] P3 P4 P10 P11 P25 P27 
+135:[empty clean] P3 P6 P10 P11 P16 P19 P20 P27 
+136:[empty clean] P3 P4 P6 P10 P11 P12 P16 P19 P20 P24 
+137:[empty clean] P3 P5 P10 P11 P21 P23 P24 P27 
+138:[empty clean] P3 P5 P6 P10 P11 P16 P23 P24 P27 
+139:[empty clean] P3 P5 P6 P10 P11 P18 P21 P24 P27 
+140:[empty clean] P3 P5 P6 P10 P11 P16 P18 P24 P27 
+141:[empty clean] P3 P5 P6 P10 P11 P13 P16 P18 P20 P27 
+142:[empty clean] P4 P5 P10 P11 P21 P26 P29 
+143:[empty clean] P4 P5 P6 P10 P11 P16 P26 P29 
+144:[empty clean] P4 P5 P10 P11 P22 P25 P29 
+145:[empty clean] P4 P5 P10 P11 P21 P22 P29 
+146:[empty clean] P4 P5 P6 P10 P11 P16 P22 P29 
+147:[empty clean] P4 P5 P6 P10 P11 P17 P25 P29 
+148:[empty clean] P4 P5 P6 P10 P11 P17 P21 P29 
+149:[empty clean] P4 P5 P6 P10 P11 P16 P17 P29 
+150:[empty clean] P3 P4 P5 P10 P11 P21 P29 
+151:[empty clean] P3 P4 P5 P10 P11 P21 P27 
+152:[empty clean] P3 P4 P5 P10 P11 P12 P21 P24 
+153:[empty clean] P3 P4 P5 P6 P10 P11 P16 P29 
+154:[empty clean] P3 P4 P5 P6 P10 P11 P16 P27 
+155:[empty clean] P3 P4 P5 P6 P10 P11 P12 P16 P24 
+156:[empty clean] P3 P4 P5 P6 P10 P11 P12 P13 P16 P20 
+157: P3 P4 P5 P6 P11 P12 P13 P14 P16 
+158: P1 P2 P3 P4 P5 P6 P7 
 
 ComSiphons:
-3: P10 P11 P12 P13 P14 P2 P3 P4 P5 P6 
-4: P11 P12 P13 P14 P3 P4 P5 P6 
-5: P12 P13 P14 P4 P5 P6 
-6: P13 P14 P5 P6 
-7: P14 P6 
-9: P10 P11 P12 P13 P2 P3 P4 P5 
-10: P11 P12 P13 P3 P4 P5 
-11: P12 P13 P4 P5 
-12: P13 P5 
-14: P10 P11 P12 P2 P3 P4 
-15: P11 P12 P3 P4 
-16: P12 P4 
-18: P10 P11 P2 P3 
-19: P11 P3 
-21: P10 P2 
+2: P12 P13 P14 P3 P4 P5 
+3: P12 P13 P14 P3 P4 P5 
+4: P13 P14 P2 P4 P5 
+5: P13 P14 P4 P5 
+6: P13 P14 P4 P5 
+7: P13 P14 P4 P5 
+8: P12 P14 P3 P5 
+9: P12 P14 P3 P5 
+10: P14 P2 P5 
+11: P12 P13 P3 P4 
+12: P12 P13 P3 P4 
+13: P13 P2 P4 
+14: P12 P13 P3 P4 
+15: P12 P13 P3 P4 
+16: P13 P2 P4 
+18: P12 P3 
+19: P12 P3 
+20: P2 
+21: P14 P2 P5 
+24: P12 P13 P14 P2 P4 P5 
+25: P12 P3 
+26: P12 P3 
+27: P12 P13 P14 P3 P4 P5 
+28: P12 P13 P14 P3 P4 P5 
+29: P13 P14 P2 P4 P5 
+30: P12 P13 P14 P3 P4 P5 
+31: P12 P13 P14 P3 P4 P5 
+32: P14 P5 
+33: P12 P14 P2 P5 
+34: P12 P14 P2 P5 
+35: P12 P14 P3 P5 
+36: P12 P14 P3 P5 
+37: P12 P14 P3 P5 
+38: P14 P5 
+39: P14 P5 
+40: P14 P5 
+41: P14 P5 
+42: P14 P5 
+45: P13 P14 P4 P5 
+46: P12 P13 P14 P2 P4 P5 
+47: P13 P14 P2 P4 P5 
+48: P12 P13 P2 P4 
+49: P13 P4 
+50: P13 P2 P4 
+51: P12 P13 P2 P4 
+52: P13 P4 
+53: P13 P2 P4 
+54: P13 P4 
+55: P13 P4 
+56: P13 P4 
+57: P13 P4 
+58: P13 P4 
+59: P13 P4 
+61: P14 P5 
+62: P13 P14 P4 P5 
+63: P13 P14 P4 P5 
+64: P13 P14 P4 P5 
+65: P13 P14 P4 P5 
+66: P13 P14 P4 P5 
+67: P13 P14 P4 P5 
+68: P14 P5 
+69: P13 P14 P4 P5 
+70: P13 P14 P4 P5 
+71: P13 P14 P4 P5 
+72: P12 P13 P2 P4 
+73: P13 P2 P4 
+74: P12 P13 P2 P4 
+75: P13 P2 P4 
+76: P12 P2 
+77: 
+78: P2 
+80: 
+81: 
+82: 
+86: P12 P13 P14 P3 P4 P5 
+87: P12 P14 P3 P5 
+88: P12 P13 P14 P3 P4 P5 
+89: P12 P3 
+90: P12 P3 
+91: P12 P3 
+92: P12 P3 
+93: P12 P13 P3 P4 
+94: P12 P13 P3 P4 
+95: P12 P13 P3 P4 
+96: P12 P13 P3 P4 
+97: P12 P13 P3 P4 
+98: P12 P13 P3 P4 
+99: P12 P13 P3 P4 
+100: P12 P13 P3 P4 
+101: P12 P13 P3 P4 
+102: P12 P13 P3 P4 
+103: P12 P13 P3 P4 
+104: P12 P13 P3 P4 
+105: P12 P13 P3 P4 
+106: P12 P13 P3 P4 
+107: P12 P13 P3 P4 
+108: P12 P13 P3 P4 
+109: 
+110: 
+111: 
+112: 
+114: P12 P13 P14 P3 P4 P5 
+115: P12 P13 P14 P3 P4 P5 
+116: P14 P5 
+117: P14 P5 
+118: P14 P5 
+119: P14 P5 
+120: P12 P3 
+121: P12 P3 
+122: P12 P3 
+123: P12 P3 
+124: 
+125: 
+129: P13 P14 P4 P5 
+130: P12 P2 
+131: P12 P14 P2 P5 
+132: P2 
+133: P13 P14 P4 P5 
+134: 
+135: P14 P5 
+136: P14 P5 
+137: P13 P4 
+138: P13 P4 
+139: P13 P4 
+140: P13 P4 
+141: 
+142: P12 P2 
+143: P12 P2 
+144: P12 P2 
+145: P12 P2 
+146: P12 P2 
+147: P12 P2 
+148: P12 P2 
+149: P12 P2 
+150: P2 
+151: 
+152: 
+153: P2 
+154: 
+155: 
+156: 
+
+Controler (141/15)
+2(P30[7])
+Pres: T11,T5
+Posts: T14,T2
+3(P31[8]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+4(P32[7])
+Pres: T12,T2,T5
+Posts: T1,T14,T3
+5(P33[5])
+Pres: T12,T5
+Posts: T14,T3
+6(P34[6]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+7(P35[7]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+8(P36[6])
+Pres: T11,T13,T3,T5
+Posts: T12,T14,T2,T4
+9(P37[7]) [removed!] 
+Pres: T11,T13,T3,T5
+Posts: T12,T14,T2,T4
+10(P38[6])
+Pres: T13,T2,T5
+Posts: T1,T14,T4
+11(P39[6])
+Pres: T11,T4
+Posts: T13,T2
+12(P40[7]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+13(P41[6])
+Pres: T12,T2,T4
+Posts: T1,T13,T3
+14(P42[7]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+15(P43[8]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+16(P44[7]) [removed!] 
+Pres: T12,T2,T4
+Posts: T1,T13,T3
+18(P45[8]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+19(P46[9]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+20(P47[8]) [removed!] 
+Pres: T2
+Posts: T1
+21(P48[13]) [removed!] 
+Pres: T13,T2,T5
+Posts: T1,T14,T4
+24(P49[12]) [removed!] 
+Pres: T11,T2,T5
+Posts: T1,T14,T3
+25(P50[4])
+Pres: T11,T3
+Posts: T12,T2
+26(P51[5]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+27(P52[13]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+28(P53[14]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+29(P54[14]) [removed!] 
+Pres: T12,T2,T5
+Posts: T1,T14,T3
+30(P55[14]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+31(P56[15]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+32(P57[2])
+Pres: T13,T5
+Posts: T14,T4
+33(P58[9])
+Pres: T11,T13,T2,T5
+Posts: T1,T12,T14,T4
+34(P59[11]) [removed!] 
+Pres: T11,T13,T2,T5
+Posts: T1,T12,T14,T4
+35(P60[13]) [removed!] 
+Pres: T11,T13,T3,T5
+Posts: T12,T14,T2,T4
+36(P61[13]) [removed!] 
+Pres: T11,T13,T3,T5
+Posts: T12,T14,T2,T4
+37(P62[14]) [removed!] 
+Pres: T11,T13,T3,T5
+Posts: T12,T14,T2,T4
+38(P63[8]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+39(P64[9]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+40(P65[4]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+41(P66[5]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+42(P67[6]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+45(P68[9]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+46(P69[12])
+Pres: T11,T2,T5
+Posts: T1,T14,T3
+47(P70[14]) [removed!] 
+Pres: T12,T2,T5
+Posts: T1,T14,T3
+48(P71[10])
+Pres: T11,T2,T4
+Posts: T1,T13,T3
+49(P72[8]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+50(P73[12]) [removed!] 
+Pres: T12,T2,T4
+Posts: T1,T13,T3
+51(P74[11]) [removed!] 
+Pres: T11,T2,T4
+Posts: T1,T13,T3
+52(P75[9]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+53(P76[13]) [removed!] 
+Pres: T12,T2,T4
+Posts: T1,T13,T3
+54(P77[4])
+Pres: T12,T4
+Posts: T13,T3
+55(P78[5]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+56(P79[6]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+57(P80[5]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+58(P81[6]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+59(P82[7]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+61(P83[8]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+62(P84[10]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+63(P85[11]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+64(P86[12]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+65(P87[11]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+66(P88[12]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+67(P89[13]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+68(P90[10]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+69(P91[12]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+70(P92[13]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+71(P93[14]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+72(P94[11]) [removed!] 
+Pres: T11,T2,T4
+Posts: T1,T13,T3
+73(P95[13]) [removed!] 
+Pres: T12,T2,T4
+Posts: T1,T13,T3
+74(P96[12]) [removed!] 
+Pres: T11,T2,T4
+Posts: T1,T13,T3
+75(P97[14]) [removed!] 
+Pres: T12,T2,T4
+Posts: T1,T13,T3
+76(P98[13]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+77(P99[10]) [removed!] 
+Pres: 
+Posts: 
+78(P100[15]) [removed!] 
+Pres: T2
+Posts: T1
+80(P101[6]) [removed!] 
+Pres: 
+Posts: 
+81(P102[7]) [removed!] 
+Pres: 
+Posts: 
+82(P103[8]) [removed!] 
+Pres: 
+Posts: 
+86(P104[13]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+87(P105[12]) [removed!] 
+Pres: T11,T13,T3,T5
+Posts: T12,T14,T2,T4
+88(P106[14]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+89(P107[5]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+90(P108[6]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+91(P109[6]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+92(P110[7]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+93(P111[11]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+94(P112[12]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+95(P113[12]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+96(P114[13]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+97(P115[12]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+98(P116[13]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+99(P117[13]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+100(P118[14]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+101(P119[12]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+102(P120[13]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+103(P121[13]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+104(P122[14]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+105(P123[13]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+106(P124[14]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+107(P125[14]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+108(P126[15]) [removed!] 
+Pres: T11,T4
+Posts: T13,T2
+109(P127[7]) [removed!] 
+Pres: 
+Posts: 
+110(P128[8]) [removed!] 
+Pres: 
+Posts: 
+111(P129[8]) [removed!] 
+Pres: 
+Posts: 
+112(P130[9]) [removed!] 
+Pres: 
+Posts: 
+114(P131[14]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+115(P132[15]) [removed!] 
+Pres: T11,T5
+Posts: T14,T2
+116(P133[14]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+117(P134[15]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+118(P135[15]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+119(P136[16]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+120(P137[14]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+121(P138[15]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+122(P139[15]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+123(P140[16]) [removed!] 
+Pres: T11,T3
+Posts: T12,T2
+124(P141[9]) [removed!] 
+Pres: 
+Posts: 
+125(P142[10]) [removed!] 
+Pres: 
+Posts: 
+129(P143[16]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+130(P144[7])
+Pres: T11,T2
+Posts: T1,T12
+131(P145[16]) [removed!] 
+Pres: T11,T13,T2,T5
+Posts: T1,T12,T14,T4
+132(P146[4])
+Pres: T2
+Posts: T1
+133(P147[16]) [removed!] 
+Pres: T12,T5
+Posts: T14,T3
+134(P148[6]) [removed!] 
+Pres: 
+Posts: 
+135(P149[15]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+136(P150[17]) [removed!] 
+Pres: T13,T5
+Posts: T14,T4
+137(P151[14]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+138(P152[15]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+139(P153[15]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+140(P154[16]) [removed!] 
+Pres: T12,T4
+Posts: T13,T3
+141(P155[17]) [removed!] 
+Pres: 
+Posts: 
+142(P156[8]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+143(P157[9]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+144(P158[8]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+145(P159[9]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+146(P160[10]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+147(P161[9]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+148(P162[10]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+149(P163[11]) [removed!] 
+Pres: T11,T2
+Posts: T1,T12
+150(P164[5]) [removed!] 
+Pres: T2
+Posts: T1
+151(P165[7]) [removed!] 
+Pres: 
+Posts: 
+152(P166[9]) [removed!] 
+Pres: 
+Posts: 
+153(P167[6]) [removed!] 
+Pres: T2
+Posts: T1
+154(P168[8]) [removed!] 
+Pres: 
+Posts: 
+155(P169[10]) [removed!] 
+Pres: 
+Posts: 
+156(P170[11]) [removed!] 
+Pres: 
+Posts: 
+
+initialMarkingCP:
+P100(15),P101(6),P102(7),P103(8),P104(13),P105(12),P106(14),P107(5),P108(6),P109(6),P110(7),P111(11),P112(12),P113(12),P114(13),P115(12),P116(13),P117(13),P118(14),P119(12),P120(13),P121(13),P122(14),P123(13),P124(14),P125(14),P126(15),P127(7),P128(8),P129(8),P130(9),P131(14),P132(15),P133(14),P134(15),P135(15),P136(16),P137(14),P138(15),P139(15),P140(16),P141(9),P142(10),P143(16),P144(7),P145(16),P146(4),P147(16),P148(6),P149(15),P150(17),P151(14),P152(15),P153(15),P154(16),P155(17),P156(8),P157(9),P158(8),P159(9),P160(10),P161(9),P162(10),P163(11),P164(5),P165(7),P166(9),P167(6),P168(8),P169(10),P170(11),P30(7),P31(8),P32(7),P33(5),P34(6),P35(7),P36(6),P37(7),P38(6),P39(6),P40(7),P41(6),P42(7),P43(8),P44(7),P45(8),P46(9),P47(8),P48(13),P49(12),P50(4),P51(5),P52(13),P53(14),P54(14),P55(14),P56(15),P57(2),P58(9),P59(11),P60(13),P61(13),P62(14),P63(8),P64(9),P65(4),P66(5),P67(6),P68(9),P69(12),P70(14),P71(10),P72(8),P73(12),P74(11),P75(9),P76(13),P77(4),P78(5),P79(6),P80(5),P81(6),P82(7),P83(8),P84(10),P85(11),P86(12),P87(11),P88(12),P89(13),P90(10),P91(12),P92(13),P93(14),P94(11),P95(13),P96(12),P97(14),P98(13),P99(10),
+
+emptyCP(17)
+77 Siphon:P3 P5 P6 P10 P11 P13 P18 P21 P27 
+77 comSiphon:
+80 Siphon:P5 P6 P12 P13 P18 P22 
+80 comSiphon:
+81 Siphon:P5 P6 P11 P12 P13 P18 P21 
+81 comSiphon:
+82 Siphon:P5 P6 P10 P11 P12 P13 P18 P20 
+82 comSiphon:
+109 Siphon:P4 P5 P11 P12 P22 P25 
+109 comSiphon:
+110 Siphon:P4 P5 P10 P11 P12 P22 P24 
+110 comSiphon:
+111 Siphon:P4 P5 P6 P11 P12 P17 P25 
+111 comSiphon:
+112 Siphon:P4 P5 P6 P10 P11 P12 P17 P24 
+112 comSiphon:
+124 Siphon:P4 P5 P6 P11 P12 P13 P17 P21 
+124 comSiphon:
+125 Siphon:P4 P5 P6 P10 P11 P12 P13 P17 P20 
+125 comSiphon:
+134 Siphon:P3 P4 P10 P11 P25 P27 
+134 comSiphon:
+141 Siphon:P3 P5 P6 P10 P11 P13 P16 P18 P20 P27 
+141 comSiphon:
+151 Siphon:P3 P4 P5 P10 P11 P21 P27 
+151 comSiphon:
+152 Siphon:P3 P4 P5 P10 P11 P12 P21 P24 
+152 comSiphon:
+154 Siphon:P3 P4 P5 P6 P10 P11 P16 P27 
+154 comSiphon:
+155 Siphon:P3 P4 P5 P6 P10 P11 P12 P16 P24 
+155 comSiphon:
+156 Siphon:P3 P4 P5 P6 P10 P11 P12 P13 P16 P20 
+156 comSiphon:
+
+sameCP
+legalControler(2): P30 7  T11 T5 ,T14 T2 
+2 same siphon:P6 P11 P19 P23 P26 P28 
+2 comSiphon, marking(7): P12 P13 P14 P3 P4 P5 
+3 comSiphon, marking(8): P12 P13 P14 P3 P4 P5 
+27 comSiphon, marking(13): P12 P13 P14 P3 P4 P5 
+28 comSiphon, marking(14): P12 P13 P14 P3 P4 P5 
+30 comSiphon, marking(14): P12 P13 P14 P3 P4 P5 
+31 comSiphon, marking(15): P12 P13 P14 P3 P4 P5 
+86 comSiphon, marking(13): P12 P13 P14 P3 P4 P5 
+88 comSiphon, marking(14): P12 P13 P14 P3 P4 P5 
+114 comSiphon, marking(14): P12 P13 P14 P3 P4 P5 
+115 comSiphon, marking(15): P12 P13 P14 P3 P4 P5 
+-----------------------
+legalControler(4): P32 7  T12 T2 T5 ,T1 T14 T3 
+4 same siphon:P6 P10 P11 P19 P23 P25 P29 
+4 comSiphon, marking(7): P13 P14 P2 P4 P5 
+29 comSiphon, marking(14): P13 P14 P2 P4 P5 
+47 comSiphon, marking(14): P13 P14 P2 P4 P5 
+-----------------------
+legalControler(5): P33 5  T12 T5 ,T14 T3 
+5 same siphon:P6 P12 P19 P23 P26 
+5 comSiphon, marking(5): P13 P14 P4 P5 
+6 comSiphon, marking(6): P13 P14 P4 P5 
+7 comSiphon, marking(7): P13 P14 P4 P5 
+45 comSiphon, marking(9): P13 P14 P4 P5 
+62 comSiphon, marking(10): P13 P14 P4 P5 
+63 comSiphon, marking(11): P13 P14 P4 P5 
+64 comSiphon, marking(12): P13 P14 P4 P5 
+65 comSiphon, marking(11): P13 P14 P4 P5 
+66 comSiphon, marking(12): P13 P14 P4 P5 
+67 comSiphon, marking(13): P13 P14 P4 P5 
+69 comSiphon, marking(12): P13 P14 P4 P5 
+70 comSiphon, marking(13): P13 P14 P4 P5 
+71 comSiphon, marking(14): P13 P14 P4 P5 
+129 comSiphon, marking(16): P13 P14 P4 P5 
+133 comSiphon, marking(16): P13 P14 P4 P5 
+-----------------------
+legalControler(8): P36 6  T11 T13 T3 T5 ,T12 T14 T2 T4 
+8 same siphon:P6 P11 P19 P22 P28 
+8 comSiphon, marking(6): P12 P14 P3 P5 
+9 comSiphon, marking(7): P12 P14 P3 P5 
+35 comSiphon, marking(13): P12 P14 P3 P5 
+36 comSiphon, marking(13): P12 P14 P3 P5 
+37 comSiphon, marking(14): P12 P14 P3 P5 
+87 comSiphon, marking(12): P12 P14 P3 P5 
+-----------------------
+legalControler(10): P38 6  T13 T2 T5 ,T1 T14 T4 
+10 same siphon:P6 P10 P11 P19 P21 P29 
+10 comSiphon, marking(6): P14 P2 P5 
+21 comSiphon, marking(13): P14 P2 P5 
+-----------------------
+legalControler(11): P39 6  T11 T4 ,T13 T2 
+11 same siphon:P5 P11 P23 P26 P28 
+11 comSiphon, marking(6): P12 P13 P3 P4 
+12 comSiphon, marking(7): P12 P13 P3 P4 
+14 comSiphon, marking(7): P12 P13 P3 P4 
+15 comSiphon, marking(8): P12 P13 P3 P4 
+93 comSiphon, marking(11): P12 P13 P3 P4 
+94 comSiphon, marking(12): P12 P13 P3 P4 
+95 comSiphon, marking(12): P12 P13 P3 P4 
+96 comSiphon, marking(13): P12 P13 P3 P4 
+97 comSiphon, marking(12): P12 P13 P3 P4 
+98 comSiphon, marking(13): P12 P13 P3 P4 
+99 comSiphon, marking(13): P12 P13 P3 P4 
+100 comSiphon, marking(14): P12 P13 P3 P4 
+101 comSiphon, marking(12): P12 P13 P3 P4 
+102 comSiphon, marking(13): P12 P13 P3 P4 
+103 comSiphon, marking(13): P12 P13 P3 P4 
+104 comSiphon, marking(14): P12 P13 P3 P4 
+105 comSiphon, marking(13): P12 P13 P3 P4 
+106 comSiphon, marking(14): P12 P13 P3 P4 
+107 comSiphon, marking(14): P12 P13 P3 P4 
+108 comSiphon, marking(15): P12 P13 P3 P4 
+-----------------------
+legalControler(13): P41 6  T12 T2 T4 ,T1 T13 T3 
+13 same siphon:P5 P10 P11 P23 P25 P29 
+13 comSiphon, marking(6): P13 P2 P4 
+16 comSiphon, marking(7): P13 P2 P4 
+50 comSiphon, marking(12): P13 P2 P4 
+53 comSiphon, marking(13): P13 P2 P4 
+73 comSiphon, marking(13): P13 P2 P4 
+75 comSiphon, marking(14): P13 P2 P4 
+-----------------------
+legalControler(18):  0  ,
+18 same siphon:P5 P6 P11 P13 P18 P22 P28 
+18 comSiphon, marking(8): P12 P3 
+19 comSiphon, marking(9): P12 P3 
+25 comSiphon, marking(4): P12 P3 
+26 comSiphon, marking(5): P12 P3 
+89 comSiphon, marking(5): P12 P3 
+90 comSiphon, marking(6): P12 P3 
+91 comSiphon, marking(6): P12 P3 
+92 comSiphon, marking(7): P12 P3 
+120 comSiphon, marking(14): P12 P3 
+121 comSiphon, marking(15): P12 P3 
+122 comSiphon, marking(15): P12 P3 
+123 comSiphon, marking(16): P12 P3 
+-----------------------
+legalControler(20):  0  ,
+20 same siphon:P5 P6 P10 P11 P13 P18 P21 P29 
+20 comSiphon, marking(8): P2 
+78 comSiphon, marking(15): P2 
+132 comSiphon, marking(4): P2 
+150 comSiphon, marking(5): P2 
+153 comSiphon, marking(6): P2 
+-----------------------
+legalControler(24):  0  ,
+24 same siphon:P6 P10 P11 P16 P19 P23 P26 P29 
+24 comSiphon, marking(12): P12 P13 P14 P2 P4 P5 
+46 comSiphon, marking(12): P12 P13 P14 P2 P4 P5 
+-----------------------
+legalControler(32): P57 2  T13 T5 ,T14 T4 
+32 same siphon:P6 P13 P19 P23 
+32 comSiphon, marking(2): P14 P5 
+38 comSiphon, marking(8): P14 P5 
+39 comSiphon, marking(9): P14 P5 
+40 comSiphon, marking(4): P14 P5 
+41 comSiphon, marking(5): P14 P5 
+42 comSiphon, marking(6): P14 P5 
+61 comSiphon, marking(8): P14 P5 
+68 comSiphon, marking(10): P14 P5 
+116 comSiphon, marking(14): P14 P5 
+117 comSiphon, marking(15): P14 P5 
+118 comSiphon, marking(15): P14 P5 
+119 comSiphon, marking(16): P14 P5 
+135 comSiphon, marking(15): P14 P5 
+136 comSiphon, marking(17): P14 P5 
+-----------------------
+legalControler(33): P58 9  T11 T13 T2 T5 ,T1 T12 T14 T4 
+33 same siphon:P4 P6 P10 P11 P19 P22 P25 P29 
+33 comSiphon, marking(9): P12 P14 P2 P5 
+34 comSiphon, marking(11): P12 P14 P2 P5 
+131 comSiphon, marking(16): P12 P14 P2 P5 
+-----------------------
+legalControler(48): P71 10  T11 T2 T4 ,T1 T13 T3 
+48 same siphon:P5 P10 P11 P21 P23 P26 P29 
+48 comSiphon, marking(10): P12 P13 P2 P4 
+51 comSiphon, marking(11): P12 P13 P2 P4 
+72 comSiphon, marking(11): P12 P13 P2 P4 
+74 comSiphon, marking(12): P12 P13 P2 P4 
+-----------------------
+legalControler(49):  0  ,
+49 same siphon:P3 P5 P10 P11 P23 P25 P27 
+49 comSiphon, marking(8): P13 P4 
+52 comSiphon, marking(9): P13 P4 
+54 comSiphon, marking(4): P13 P4 
+55 comSiphon, marking(5): P13 P4 
+56 comSiphon, marking(6): P13 P4 
+57 comSiphon, marking(5): P13 P4 
+58 comSiphon, marking(6): P13 P4 
+59 comSiphon, marking(7): P13 P4 
+137 comSiphon, marking(14): P13 P4 
+138 comSiphon, marking(15): P13 P4 
+139 comSiphon, marking(15): P13 P4 
+140 comSiphon, marking(16): P13 P4 
+-----------------------
+legalControler(76):  0  ,
+76 same siphon:P5 P6 P10 P11 P13 P16 P18 P22 P29 
+76 comSiphon, marking(13): P12 P2 
+130 comSiphon, marking(7): P12 P2 
+142 comSiphon, marking(8): P12 P2 
+143 comSiphon, marking(9): P12 P2 
+144 comSiphon, marking(8): P12 P2 
+145 comSiphon, marking(9): P12 P2 
+146 comSiphon, marking(10): P12 P2 
+147 comSiphon, marking(9): P12 P2 
+148 comSiphon, marking(10): P12 P2 
+149 comSiphon, marking(11): P12 P2 
+-----------------------
+
+OK, read ina.pnt,SESSION.ina
+OK, output ina.pnt.txt,inaCP.pnt

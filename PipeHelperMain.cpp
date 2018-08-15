@@ -62,6 +62,7 @@ int main()
 	HtmlHelper pipe1;
 	Controler controler;
 	string pnt,xml,htmlFile,outFile;
+	string::size_type pos;
 	char select = '0';
 	while (1) {
 		if (select != '\n') {
@@ -69,7 +70,8 @@ int main()
 				<< "2: Invariant Analysis.html to txt.\n"
 				<< "3: Incidence Matrix.html to txt.\n"
 				<< "4: xml to txt.\n"
-				<< "5: Siphons.\n"
+				<< "5: comSiphons(need SESSION.ina).\n"
+				<< "6: controler(need SESSION.ina).\n"
 				<< "0: exit!\n";
 			cout << "\nPlease select: ";
 		}
@@ -81,7 +83,7 @@ int main()
 			cout << "input pnt file: ";
 			pnt = "";
 			while(pnt.empty()) getline(cin, pnt);
-			if (pnt.find_last_of('.pnt') == string::npos) pnt.append(".pnt");
+			if (pnt.find_last_of('.') == string::npos) pnt.append(".pnt");
 			outFile = pnt + ".xml";
 			pipe.pnt2xml(pnt, outFile);
 			break;
@@ -99,17 +101,29 @@ int main()
 			cout << "input xml file: ";
 			xml= "";
 			while (xml.empty()) getline(cin, xml);
-			if (xml.find_last_of('.xml') == string::npos) xml.append(".xml");
+			if (xml.find_last_of('.') == string::npos) xml.append(".xml");
 			outFile = xml + ".txt";
 			pipe.readXml(xml, outFile);
 			break;
 		case '5':
 			cout << "input pnt file(include PR and PA): ";
-			pnt = "INA.pnt"; // TODO:
+			//pnt = "INA2.pnt"; 
 			while (pnt.empty()) getline(cin, pnt);
-			if (pnt.find_last_of('.pnt') == string::npos) pnt.append(".pnt");
+			if (pnt.find_last_of('.') == string::npos) pnt.append(".pnt");
 			outFile = pnt + ".txt";
 			controler.comSiphons(pnt,"SESSION.ina",outFile);
+			break;
+			// 由.pnt和SESSION.ina文件计算控制器，生成新的含有控制器的pnt文件
+		case '6':
+			cout << "input pnt file(include PR and PA): ";
+			//pnt = "INA2.pnt"; 
+			while (pnt.empty()) getline(cin, pnt);
+			if (pnt.find_last_of('.') == string::npos) pnt.append(".pnt");
+			outFile = pnt + ".txt";
+			pos = pnt.find_last_of('.');
+			xml = pnt.substr(0,pos);
+			xml.append("CP").append(".pnt");
+			controler.pntCP(pnt, "SESSION.ina", outFile, xml);
 			break;
 		default:
 			break;

@@ -1,8 +1,2 @@
-﻿  PipeHelperMain.cpp
-f:\github_repository\pipehelper\pipehelper\pipehelpermain.cpp(84): warning C4305: “参数”: 从“int”到“const char”截断
-f:\github_repository\pipehelper\pipehelper\pipehelpermain.cpp(84): warning C4309: “参数”: 截断常量值
-f:\github_repository\pipehelper\pipehelper\pipehelpermain.cpp(102): warning C4305: “参数”: 从“int”到“const char”截断
-f:\github_repository\pipehelper\pipehelper\pipehelpermain.cpp(102): warning C4309: “参数”: 截断常量值
-f:\github_repository\pipehelper\pipehelper\pipehelpermain.cpp(110): warning C4305: “参数”: 从“int”到“const char”截断
-f:\github_repository\pipehelper\pipehelper\pipehelpermain.cpp(110): warning C4309: “参数”: 截断常量值
+﻿  Controler.cpp
   PipeHelper.vcxproj -> F:\github_repository\PipeHelper\x64\Debug\PipeHelper.exe
