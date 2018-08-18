@@ -11,6 +11,8 @@ using namespace std;
  * 解析PIPE输出的html文件: Invariant Analysis.html,Incidence Matrix.html
  * 前者调用：bool InvariantsHtml(const string& htmlFile, const string &outFile);
  * 后者调用: bool IncidencesHtml(const string& htmlFile, const string &outFile);
+ * 生成LINGO输入格式文件,调用
+ * bool InvariantsIncidences(const string& Invariant, const string& Incidence, const string &outFile);
  * 依赖下列文件：
  * HtmlParser.h
  * HtmlParse.cpp
@@ -22,6 +24,16 @@ class HtmlHelper
 public:
 	HtmlHelper();
 	~HtmlHelper();
+
+	/**************************************
+	 * 读取PIPE输出的html文件，解析后生成LINGO输入格式文件
+	 * 参数：
+	 * const string& Invariant: PIPE输出的Invariant Analysis.html文件
+	 * const string& Incidence: PIPE输出的Incidence Matrix.html文件
+	 * const string& outFile:  解析后生成LINGO输入格式文件
+	 * 成功返回true，否则返回false
+	 ***************************************/
+	bool InvariantsIncidences(const string& Invariant, const string& Incidence, const string &outFile);
 
 ///////////////////Invariant Analysis.html
 public:

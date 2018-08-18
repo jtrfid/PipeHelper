@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <fstream>
 #include <algorithm>
@@ -38,6 +39,7 @@ bool Controler::pntCP(const string& pntFile, const string& SESSIONina, const str
 	//从controlerPlace中筛选合法控制器,填充数据成员legalControler
 	legalRule();
 
+	// 生成pnt文件
 	fpnt << "p  m   pre,pos"<< endl;
 	for (auto it = Places.begin(); it != Places.end(); it++)
 	{
@@ -45,199 +47,81 @@ bool Controler::pntCP(const string& pntFile, const string& SESSIONina, const str
 		auto ft = find(PR.begin(), PR.end(), *it);
 		if (ft != PR.end()) continue;  // *it存在于PR中
 
+		// 添加控制器以后, 保留下来的原有Places
+		PlacesAfterCP.push_back(*it);
+
 		string place = (*it).substr(1);
 		int marking = initialMarking[*it];
-		fpnt << place << " " << marking << "   ";
-		
-		set<string> pres = ptNodes[*it].Pres;
-		for (string s : pres)
+		//fpnt << left << setw(4);
+		fpnt << place << " " << marking << " ";
+		set<string, cmpByKey> pres = ptNodes[*it].Pres;
+		for (auto it1 = pres.begin(); it1 != pres.end(); it1++)
 		{
-			fpnt << s.substr(1);
+			fpnt << right << setw(4);
+			fpnt << (*it1).substr(1);
 			string arcId;
-			createArcId(*it, s, arcId);
+			createArcId(*it, *it1, arcId);
 			int w = weight[arcId];
-			if (w > 1) fpnt << ":" << w;
-			fpnt << " ";
+			if (w > 1) {
+				fpnt << ":" << w;
+			}
+			if(it1 != prev(pres.end())) fpnt << " ";
 		}
-		fpnt << ',';
-		set<string> posts = ptNodes[*it].Posts;
-		for (string s : posts)
+		fpnt << setw(1) <<  ',';
+		set<string,cmpByKey> posts = ptNodes[*it].Posts;
+		for (auto it1 = posts.begin(); it1 != posts.end(); it1++)
 		{
-			fpnt << s.substr(1);
+			fpnt << left << setw(4);
+			fpnt << (*it1).substr(1);
 			string arcId;
-			createArcId(*it, s, arcId);
+			createArcId(*it, *it1, arcId);
 			int w = weight[arcId];
 			if (w > 1) fpnt << ":" << w;
-			fpnt << " ";
+			if (it1 != prev(posts.end())) fpnt << " ";
 		}
 		fpnt << endl;
 	}
 	// controler
-	for (auto it = legalControler.begin(); it != legalControler.end(); it++)
+	for (auto it = CPInfo.begin(); it != CPInfo.end(); it++)
 	{
-		fpnt << it->second.id << " ";
-		fpnt << initialMarkingCP[it->second.name];
-		fpnt << "    ";
-		set<string> pres = it->second.Pres;
-		for (string s : pres) fpnt << s.substr(1) << " ";
+		if (it->second.removed || it->second.isEmpty) continue; // 被剔除
+		// fpnt << left << setw(4);
+		fpnt << controlerPlace[it->first].id << " " 
+			 << initialMarkingCP[controlerPlace[it->first].name]
+		     << " ";
+		set<string, cmpByKey> pres = controlerPlace[it->first].Pres;
+		for (auto it1 = pres.begin(); it1 != pres.end(); it1++)
+		{
+			if (it1 != prev(pres.end())) fpnt << (*it1).substr(1) << " ";
+			else fpnt << (*it1).substr(1);
+		}
 		fpnt << ',';
-		set<string> posts = it->second.Posts;
-		for (string s : posts) 	fpnt << s.substr(1) << " ";
+		set<string,cmpByKey> posts = controlerPlace[it->first].Posts;
+		for (auto it1 = posts.begin(); it1 != posts.end(); it1++)
+		{
+			if (it1 != prev(posts.end())) fpnt << (*it1).substr(1) << " ";
+			else fpnt << (*it1).substr(1);
+		}
 		fpnt << endl;
 	}
 	fpnt << "@" << endl;
-	// PR, 剔除legalControler中的Place
+
 	fpnt << "PR ";
-	for (auto it = legalControler.begin(); it != legalControler.end(); it++)
+	for (auto it = PRafterCP.begin(); it != PRafterCP.end(); it++)
 	{
-		if(it != prev(legalControler.end())) fpnt << it->second.id << ",";
-		else fpnt << it->second.id << endl;
+		if(it != prev(PRafterCP.end())) fpnt << (*it).substr(1) << ",";
+		else fpnt << (*it).substr(1) << endl;
 	}
 	fpnt << "PA ";
 	for (auto it = PA.begin(); it != PA.end(); it++)
 	{
-		if (it != prev(PA.end())) fpnt << *it << ",";
-		else fpnt << *it << endl;
+		if (it != prev(PA.end())) fpnt << (*it).substr(1) << ",";
+		else fpnt << (*it).substr(1) << endl;
 	}
-	////////////////////显示和记录
-	view(fout);
 
-	std::cout << "\nControler (" << controlerPlace.size() << "/" << legalControler.size() << ")" << endl;
-	fout << "\nControler (" << controlerPlace.size() << "/" << legalControler.size() << ")" << endl;
-	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)
-	{
-		std::cout << it->first << "(" << it->second.name << "[" << initialMarkingCP[it->second.name] << "])";
-		fout << it->first << "(" << it->second.name << "[" << initialMarkingCP[it->second.name] << "])";
-		if(legalControler.find(it->first) == legalControler.end()) { // 没找到
-			std::cout << " [removed!] ";
-			fout << " [removed!] ";
-		}
-
-		std::cout << "\nPres: ";
-		fout << "\nPres: ";
-		for (auto it1 = it->second.Pres.begin(); it1 != it->second.Pres.end(); it1++)
-		{
-			if (it1 != prev(it->second.Pres.end())) {
-				std::cout << *it1 << ",";
-				fout << *it1 << ",";
-			}
-			else {
-				std::cout << *it1;
-				fout << *it1;
-			}
-		}
-		std::cout << "\nPosts: ";
-		fout << "\nPosts: ";
-		for (auto it1 = it->second.Posts.begin(); it1 != it->second.Posts.end(); it1++)
-		{
-			if (it1 != prev(it->second.Posts.end())) {
-				std::cout << *it1 << ",";
-				fout << *it1 << ",";
-			}
-			else {
-				std::cout << *it1;
-				fout << *it1;
-			}
-		}
-		std::cout << endl;
-		fout << endl;
-	}
-	std::cout << "\ninitialMarkingCP:" << endl;
-	fout << "\ninitialMarkingCP:" << endl;
-	for (auto it = initialMarkingCP.begin(); it != initialMarkingCP.end(); it++)
-	{
-		std::cout << it->first << "(" << it->second << "),";
-		fout << it->first << "(" << it->second << "),";
-	}
-	std::cout << endl;
-	fout << endl;
-
-	// emptyCP
-	std::cout << "\nemptyCP(" << emptyCP.size() << ")" << endl;
-	fout << "\nemptyCP(" << emptyCP.size() << ")" << endl;
-	for (auto it = emptyCP.begin(); it != emptyCP.end(); it++)
-	{
-		std::cout << it->first << " Siphon:";
-		fout << it->first << " Siphon:";
-		Siphon s = Siphons[it->first];
-		vector<string> p = s.siphon;
-		for (string s : p) {
-			std::cout << s << " ";
-			fout << s << " ";
-		}
-		std::cout << endl;
-		fout << endl;
-
-		std::cout << it->first << " comSiphon:";
-		fout << it->first << " comSiphon:";
-		set<string> com = ComSiphons[it->first];
-		for (string s : com) {
-			std::cout << s << " ";
-			fout << s << " ";
-		}
-		std::cout << endl;
-		fout << endl;
-	}
-		
-	//sameCP
-	std::cout << "\nsameCP" << endl;
-	fout << "\nsameCP" << endl;
-	for (auto it = sameCP.begin(); it != sameCP.end(); it++)
-	{
-		std::cout << "legalControler(" << it->first << "): ";
-		fout << "legalControler(" << it->first << "): ";
-		ptNode pc = legalControler[it->first];
-		std::cout << pc.name << " " << initialMarkingCP[pc.name] << "  ";
-		fout << pc.name << " " << initialMarkingCP[pc.name] << "  ";
-		for (string s : pc.Pres) {
-			std::cout << s << " ";
-			fout << s << " ";
-		}
-		std::cout << ",";
-		fout << ",";
-		for (string s : pc.Posts) {
-			std::cout << s << " ";
-			fout << s << " ";
-		}
-		std::cout << endl;
-		fout << endl;
-
-		std::cout << it->first << " same siphon:";
-		fout << it->first << " same siphon:";
-		Siphon s = Siphons[it->first];
-		vector<string> p = s.siphon;
-		for (string s : p) {
-			std::cout << s << " ";
-			fout << s << " ";
-		}
-		std::cout << endl;
-		fout << endl;
-		std::cout << it->first << " comSiphon, marking(" << initialMarkingCP[controlerPlace[it->first].name] << "): ";
-		fout << it->first << " comSiphon, marking(" << initialMarkingCP[controlerPlace[it->first].name] << "): ";
-		set<string> com = ComSiphons[it->first];
-		for (string s : com) {
-			std::cout << s << " ";
-			fout << s << " ";
-		}
-		std::cout << endl;
-		fout << endl;
-
-		vector<int> same = it->second;
-		for (auto it1 = same.begin(); it1 != same.end(); it1++)
-		{
-			std::cout << *it1 << " comSiphon, marking(" << initialMarkingCP[controlerPlace[*it1].name] << "): ";
-			fout << *it1 << " comSiphon, marking(" << initialMarkingCP[controlerPlace[*it1].name] << "): ";
-			set<string> com = ComSiphons[*it1];
-			for (string s : com) {
-				std::cout << s << " ";
-				fout << s << " ";
-			}
-			std::cout << endl;
-			fout << endl;
-		}
-		std::cout << "-----------------------" << endl;
-		fout << "-----------------------" << endl;
-	}
+	// 显示和记录controler信息
+	viewControler(fout);
+	
 	cout << endl;
 	fout << endl;
 	if (ret) {
@@ -266,23 +150,24 @@ bool Controler::addControler()
 	// 填充数据成员controlerPlace和initialMarkingCP
 	for (auto it = ComSiphons.begin(); it != ComSiphons.end(); it++, i++) 
 	{
-		set<string> comSiphon = it->second; // 信标补集
-		set<string> pres, posts; // 信标补集的前后置集
+		set<string,cmpByKey> comSiphon = it->second; // 信标补集
+		set<string,cmpByKey> pres, posts; // 信标补集的前后置集
 		for (string s : comSiphon)
 		{
 			pres.insert(ptNodes[s].Pres.begin(), ptNodes[s].Pres.end());
 			posts.insert(ptNodes[s].Posts.begin(), ptNodes[s].Posts.end());
 		}
-		set<string> pres1, posts1;  // pres1 = pres - posts, posts1 = post - pres
-	    std::set_difference(pres.begin(), pres.end(), posts.begin(), posts.end(), inserter(pres1, pres1.end()));
-	    std::set_difference(posts.begin(), posts.end(), pres.begin(), pres.end(), inserter(posts1, posts1.end()));
+		set<string, cmpByKey> pres1, posts1;  // pres1 = pres - posts, posts1 = post - pres
+	    std::set_difference(pres.begin(), pres.end(), posts.begin(), posts.end(), inserter(pres1, pres1.end()), cmpByKey());
+	    std::set_difference(posts.begin(), posts.end(), pres.begin(), pres.end(), inserter(posts1, posts1.end()), cmpByKey());
 		// 控制库所的前置集是posts1，后置集是pres1
 		ptNode cp;
-		cp.type = PLACE;
-		cp.id = placeNum + i; // 编号规则：原有Places后顺序排列
+		cp.type = CONTROLER;
+		cp.id = placeNum + i; // 编号规则：原有Places最大序号后顺序排列
 		cp.name.assign("P").append(to_string(cp.id));
-		cp.Pres = posts1;
-		cp.Posts = pres1;
+		cp.cpKey = it->first; // controlerPlace/Siphons/ComSiphons/CPInfo key 一致, 统称cpKey
+		cp.Pres.insert(posts1.begin(), posts1.end());
+		cp.Posts.insert(pres1.begin(), pres1.end());
 		controlerPlace.insert(make_pair(it->first,cp));
 
         // 控制库所marking是被清空信标的marking总和 - 1
@@ -293,77 +178,115 @@ bool Controler::addControler()
 		}
 		initialMarkingCP.insert(make_pair(cp.name, marking - 1));
 	}
-
 	return true;
 }
 
 /*********************************************
- * 从controlerPlace中筛选合法控制器,填充数据成员legalControler,emptyCP,sameCP
+ * 从controlerPlace中筛选合法控制器,填充数据成员CPInfo
+ * 从CPInfo提取有效控制器的资源库所至PRafterCP
  * 筛选规则：
  * (1) 剔除Pres和Posts为空的controlerPlace
  * (2) Pres和Posts一致的controlerPlace，取marking最小者。
  ***********************************************/
 void Controler::legalRule()
 {
-	struct result
+	set<int> samed; // 存储controlerPlace key值, 记录是否已比较
+	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)  // for#1
 	{
-		int id;       // controlerPlace key
-		ptNode place; // controlerPlace value
-		int marking;  // initialMarkingCP;
-	};
-	set<int> samed; // 应经有相同的controlerPlace key值,记录是否已比较
-	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)
-	{
+		ControlerInfo info;
+		info.cpKey = it->first;
+		set<string> pres(it->second.Pres.begin(), it->second.Pres.end());
+		set<string> posts(it->second.Posts.begin(),it->second.Posts.end()); 
+		if (pres.empty() && posts.empty()) {
+			info.isEmpty = true;
+			CPInfo.insert(make_pair(it->first, info));
+			continue; // 空值继续
+		}
 		if (samed.find(it->first) != samed.end())
 			continue; // 已经有相同值，记录在案，不用比较了。
 
-		//map<int, result, greater<int>> same;  // key: marking,降序排列
-		map<int, result, less<int>> same;  // key: marking，升序排列，默认
-		set<string> pres = it->second.Pres;
-		set<string> posts = it->second.Posts; 
-		if (pres.empty() || posts.empty()) {
-			// 填充emptyCP
-			emptyCP.insert(make_pair(it->first, it->second));
-			continue; // 空值继续
-		}
-		for (auto it1 = next(it); it1 != controlerPlace.end(); it1++)
+		// it,it1两两比较，如果pres和posts相同，取making小者为合法控制器
+		for (auto it1 = next(it); it1 != controlerPlace.end(); it1++) // for#2
 		{
-			
-			set<string> pres1 = it1->second.Pres;
-			set<string> posts1 = it1->second.Posts;
-			if (Tools::sameSet(pres, pres1) && Tools::sameSet(posts, posts1))
+			set<string> pres1(it1->second.Pres.begin(), it1->second.Pres.end());  // 由于使用Tools::sameSet(),这两个变量不能声明为<string,cmpByKey>
+			set<string> posts1(it1->second.Posts.begin(), it1->second.Posts.end());
+			if (pres1.empty() && posts1.empty()) continue; // 空值继续
+			if (Tools::sameSet(pres, pres1) && Tools::sameSet(posts, posts1)) // 相同的pres和posts
 			{
-				samed.insert(it1->first); 
-				// 填充sameCP
-				if (sameCP.find(it->first) == sameCP.end()) // 不存在
-				{
-					vector<int> v;
-					v.push_back(it1->first);
-					sameCP.insert(make_pair(it->first, v));
-				}
-				else // 存在
-				{
-					vector<int> v = sameCP[it->first];
-					v.push_back(it1->first);
-					sameCP[it->first] = v;
-				}
-				
-				// 相同marking不被插入
-				result r;
-				int m, m1;
-				m = initialMarkingCP[it->second.name];
-				m1 = initialMarkingCP[it1->second.name];
-				r.marking = (m < m1) ? m : m1;
-				r.id = (m < m1) ? it->first : it1->first;
-				r.place = (m < m1) ? it->second : it1->second;
-				same.insert(make_pair(r.marking,r));
+				samed.insert(it1->first);  // 记录已经比较
+				info.sameCP.push_back(it1->first);
+			}
+		} // for#2 end
+		// 没有相同的Pres和Posts，继续
+		if (info.sameCP.empty()) {
+			info.removed = false;
+			CPInfo.insert(make_pair(it->first, info));
+			continue;
+		}
+		//Pres和Posts一致的controlerPlace，取marking最小者。
+		int smallerMarking = initialMarkingCP[it->second.name];
+		int smallerId = it->first;
+		for (int cpKey : info.sameCP) { // 找smallerId,smallerMarking
+			string name = controlerPlace[cpKey].name;
+			if (initialMarkingCP[name] < smallerMarking)
+			{
+				smallerId = cpKey;
+				smallerMarking = initialMarkingCP[name];
 			}
 		}
-		// 填充legalControler
-		if (!same.empty()) {
-			result r = same.begin()->second; // 按照marking升序排列，第一个same必是所求
-			legalControler.insert(make_pair(r.id, r.place));
+		// it->first没有被剔除
+		if (smallerId == it->first)
+		{
+			info.removed = false;
+			CPInfo.insert(make_pair(it->first, info));
+			// 考察info.sameCP，全部被剔除，被it->first取代
+			for (auto it2 = info.sameCP.begin(); it2 != info.sameCP.end();it2++)
+			{
+				ControlerInfo info1;
+				info1.cpKey = *it2;
+				info1.sameCP.push_back(it->first);
+				info1.removed = true;
+				info1.replacedId = smallerId;
+				for (auto it3 = info.sameCP.begin(); it3 != info.sameCP.end(); it3++)
+				{   
+					if (it3 != it2) info1.sameCP.push_back(*it3);
+				}
+				CPInfo.insert(make_pair(*it2, info1));
+			}
 		}
+		// it->first被剔除，被smallerId取代
+		else
+		{
+			info.removed = true;
+			info.replacedId = smallerId;
+			CPInfo.insert(make_pair(it->first, info));
+			// 考察info.sameCP，被smallerId取代
+			for (auto it2 = info.sameCP.begin(); it2 != info.sameCP.end(); it2++)
+			{
+				ControlerInfo info1;
+				info1.cpKey = *it2;
+				info1.sameCP.push_back(it->first);
+				if (smallerId == *it2) {
+					info1.removed = false;
+				}
+				else {
+					info1.removed = true;
+					info1.replacedId = smallerId;
+				}
+				for (auto it3 = info.sameCP.begin(); it3 != info.sameCP.end(); it3++)
+				{
+					if (it3 != it2) info1.sameCP.push_back(*it3);
+				}
+				CPInfo.insert(make_pair(*it2, info1));
+			}
+		}
+	} // for#1 end
+
+	// 从CPInfo提取有效控制器的资源库所至PRafterCP
+	for (auto it = CPInfo.begin(); it != CPInfo.end(); it++)
+	{
+		if (it->second.removed || it->second.isEmpty) continue;
+		PRafterCP.insert(controlerPlace[it->first].name);
 	}
 }
 
@@ -388,7 +311,7 @@ bool Controler::comSiphons(const string& pntFile, const string& SESSIONina, cons
 	{
 		Siphon s = it->second;
 		if (s.clean) {  // 清空的信标
-			set<string> comSiphon;
+			set<string,cmpByKey> comSiphon;
 			ret = comSiphons(s.siphon, PR, comSiphon);
 			if (!ret) break;
 			ComSiphons.insert(make_pair(it->first, comSiphon));
@@ -425,7 +348,7 @@ bool Controler::comSiphons(const string& pntFile, const string& SESSIONina, cons
  * set<string>& comSiphon: 返回信标补集
  * 成功返回true, 否则，返回false(例如，补集为空 )
  ************************************/
-bool Controler::comSiphons(const vector<string>& siphons, const set<string>& Pr, set<string>& comSiphon)
+bool Controler::comSiphons(const vector<string>& siphons, const set<string>& Pr, set<string, cmpByKey>& comSiphon)
 {
 	bool ret = true;
 	set<string> unionHr;
@@ -498,46 +421,249 @@ void Controler::clear()
 {
 	XmlHelper::clear();
 	PR.clear();
+	PRafterCP.clear();
 	PA.clear();
 	ptNodes.clear();
 	Siphons.clear();
 	ComSiphons.clear();
 	controlerPlace.clear();
 	initialMarkingCP.clear();
-	emptyCP.clear();
-	sameCP.clear();
+	CPInfo.clear();
+	PlacesAfterCP.clear();
+}
+
+// 显示和记录控制器的ptNode信息
+void Controler::ptNodeView(ptNode node, ofstream &fout)
+{
+	if (node.type != CONTROLER) return;
+	std::cout << node.cpKey << " : " << node.name << " " << initialMarkingCP[node.name] << "   ";
+	fout << node.cpKey << " : " << node.name << " " << initialMarkingCP[node.name] << "   ";
+	for (string s : node.Pres) {
+		std::cout << s << " ";
+		fout << s << " ";
+	}
+	std::cout << ",";
+	fout << ",";
+	for (string s : node.Posts) {
+		std::cout << s << " ";
+		fout << s << " ";
+	}
+	std::cout << endl;
+	fout << endl;
+	std::cout << node.cpKey << "    Siphon:";
+	fout << node.id << "    Siphon:";
+	Siphon s = Siphons[node.cpKey];
+	vector<string> p = s.siphon;
+	for (string s : p) {
+		std::cout << s << " ";
+		fout << s << " ";
+	}
+	std::cout << endl;
+	fout << endl;
+
+	std::cout << node.cpKey << " comSiphon:";
+	fout << node.id << " comSiphon:";
+	set<string, cmpByKey> com = ComSiphons[node.cpKey];
+	for (string s : com) {
+		std::cout << s << " ";
+		fout << s << " ";
+	}
+	std::cout << endl;
+	fout << endl;
+}
+
+// 显示和记录controler信息
+void Controler::viewControler(ofstream &fout)
+{
+	view(fout);
+
+	std::cout << "========Legal(Not removed)Controler:" << endl;
+	fout << "========Legal(Not removed)Controler:" << endl;
+	std::cout << "cpKey : P  M  Pres,Posts" << endl;
+	fout << "cpKey : P  M  Pres,Posts" << endl;
+	int legalNum = 0;
+	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)
+	{
+		if (CPInfo[it->first].removed || CPInfo[it->first].isEmpty) continue;
+		ptNodeView(it->second, fout);
+		ControlerInfo info = CPInfo[it->first];
+		int marking = initialMarkingCP[it->second.name];
+		if (!info.sameCP.empty())
+		{
+			std::cout << "取代如下控制器([信标不同,补集相同,控制器Marking大的被剔除。]" << info.sameCP.size() << "个):" << endl;
+			fout << "取代如下控制器([信标不同,补集相同,控制器Marking大的被剔除。]" << info.sameCP.size() << "个):" << endl;
+			for (int cpKey : info.sameCP)
+			{
+				ptNodeView(controlerPlace[cpKey], fout);
+				int marking1 = initialMarkingCP[controlerPlace[cpKey].name];
+				if (marking == marking1) {
+					std::cout << "***********marking相同(=" << marking << "),任取一个。" << endl;
+					fout << "***********marking相同(=" << marking << "),任取一个。" << endl;
+				}
+				std::cout << "###" << endl;
+				fout << "###" << endl;
+			}
+		}
+		legalNum++;
+		std::cout << "-------------------------------" << endl;
+		fout << "-------------------------------" << endl;
+	}
+	//std::cout << "Legal(Not removed)Controler number:" << legalNum << endl;
+	//fout << "Legal(Not removed)Controler number:" << legalNum << endl;
+
+	/****************************************不用输出了，仅统计数量
+	std::cout << "\n========Empty Controler:" << endl;
+	fout << "\n========Empty Controler:" << endl;
+	std::cout << "cpKey : P  M  Pres,Posts" << endl;
+	fout << "cpKey : P  M  Pres,Posts" << endl;
+	*****************************************/
+	int emptyNum = 0;
+	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)
+	{
+		if (!CPInfo[it->first].isEmpty) continue;
+		emptyNum++;
+		/****************************************不用输出了，仅统计数量
+		ptNodeView(it->second, fout);
+		std::cout << "-------------------------------" << endl;
+		fout << "-------------------------------" << endl;
+		*****************************************/
+	}
+
+	// 非空控制器被剔除，由replacedId取代
+	/****************************************不用输出了，仅统计数量
+	std::cout << "\n========Removed Controler:" << endl;
+	fout << "\n========Removed Controler:" << endl;
+	std::cout << "cpKey : P  M  Pres,Posts" << endl;
+	fout << "cpKey : P  M  Pres,Posts" << endl;
+	*****************************************/
+	int removedNum = 0;
+	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)
+	{
+		if (!CPInfo[it->first].removed || CPInfo[it->first].isEmpty) continue;
+		removedNum++;
+		/****************************************不用输出了，仅统计数量
+		ptNodeView(it->second, fout);
+		ControlerInfo info = CPInfo[it->first];
+		std::cout << "Replaced by:" << endl;
+		fout << "Replaced by:" << endl;
+		ptNodeView(controlerPlace[info.replacedId], fout);
+		std::cout << "**************************" << endl;
+		fout << "**************************" << endl;
+		if (!info.sameCP.empty())
+		{
+			std::cout << "it's a same as(" << info.sameCP.size() << "):" << endl;
+			fout << "it's a same as(" << info.sameCP.size() << "):" << endl;
+			for (int cpKey : info.sameCP)
+			{
+				ptNodeView(controlerPlace[cpKey], fout);
+				std::cout << "###" << endl;
+				fout << "###" << endl;
+			}
+		}
+		std::cout << "-------------------------------" << endl;
+		fout << "-------------------------------" << endl;
+		****************************************/
+	}
+
+	std::cout << "\nTotal controller: " << controlerPlace.size() << ", Legal: " << legalNum << ", Empty: " << emptyNum << ", Removed: " << removedNum << endl;
+	fout << "\nTotal controller: " << controlerPlace.size() << ", Legal: " << legalNum << ", Empty: " << emptyNum << ", Removed: " << removedNum << endl;
+
+	std::cout << "\nLegal controler(marking):" << endl;
+	fout << "\nLegal controler(marking):" << endl;
+	for (auto it = controlerPlace.begin(); it != controlerPlace.end(); it++)
+	{
+		if (CPInfo[it->first].removed || CPInfo[it->first].isEmpty) continue;
+		std::cout << it->second.name << "(" << initialMarkingCP[it->second.name] << "),";
+		fout << it->second.name << "(" << initialMarkingCP[it->second.name] << "),";
+	}
+	std::cout << endl << endl;
+	fout << endl << endl;
+
+	// 添加控制器以后, 保留下来的原有Places
+	std::cout << "\n添加控制器以后, 保留下来的原有Places(marking):" << endl;
+	fout << "\n添加控制器以后, 保留下来的原有Places(marking):" << endl;
+	for (auto it = PlacesAfterCP.begin(); it != PlacesAfterCP.end(); it++)
+	{
+		if (next(it) != PlacesAfterCP.end()) {
+			std::cout << (*it) << "(" << initialMarking[*it] << "),";
+			fout << (*it) << "(" << initialMarking[*it] << "),";
+		}
+		else {
+			std::cout << (*it) << "(" << initialMarking[*it] << ")" << endl;
+			fout << (*it) << "(" << initialMarking[*it] << ")" << endl;
+		}
+	}
+	std::cout << endl;
+	fout << endl;
+
+	std::cout << "\nBefore add controller PR ";
+	fout << "\nBefore add controller PR ";
+	for (auto it = PR.begin(); it != PR.end(); it++)
+	{
+		if (it != prev(PR.end())) {
+			cout << (*it).substr(1) << ",";
+			fout << (*it).substr(1) << ",";
+		}
+		else {
+			cout << (*it).substr(1) << endl;
+			fout << (*it).substr(1) << endl;
+		}
+	}
+
+	std::cout << "After add controller PR ";
+	fout << "After add controller PR ";
+	for (auto it = PRafterCP.begin(); it != PRafterCP.end(); it++)
+	{
+		if (it != prev(PRafterCP.end())) {
+			cout << (*it).substr(1) << ",";
+			fout << (*it).substr(1) << ",";
+		}
+		else {
+			cout << (*it).substr(1) << endl;
+			fout << (*it).substr(1) << endl;
+		}
+	}
+	std::cout << "\nPA ";
+	fout << "\nPA ";
+	for (auto it = PA.begin(); it != PA.end(); it++)
+	{
+		if (it != prev(PA.end())) {
+			cout << (*it).substr(1) << ",";
+			fout << (*it).substr(1) << ",";
+		}
+		else {
+			cout << (*it).substr(1) << endl;
+			fout << (*it).substr(1) << endl;
+		}
+	}
 }
 
 // 显示和记录信息
 void Controler::view(ofstream &fout)
 {
 	XmlHelper::view(fout);
-	std::cout << "Pres,Posts:" << endl;
-	fout << "Pres,Posts:" << endl;
-	for (auto it = ptNodes.begin(); it != ptNodes.end(); it++)
+	std::cout << "\nBefore add controller: \nP M Pres,Posts" << endl;
+	fout << "\nBefore add controller: \nP M Pres,Posts" << endl;
+	for (auto it = Places.begin(); it != Places.end(); it++)
 	{
-		std::cout << it->first << endl << " Pres: ";
-		fout << it->first << endl << " Pres: ";
-		for (auto it1 = it->second.Pres.begin(); it1 != it->second.Pres.end(); it1++)
+		std::cout << *it << " " << initialMarking[*it] << "   ";
+		fout << *it << " " << initialMarking[*it] << "   ";
+		for (auto it1 = ptNodes[*it].Pres.begin(); it1 != ptNodes[*it].Pres.end(); it1++)
 		{
-			if (it1 != prev(it->second.Pres.end())) {
-				std::cout << *it1 << ",";
-				fout << *it1 << ",";
+			if (it1 != prev(ptNodes[*it].Pres.end())) {
+				std::cout << *it1 << " ";
+				fout << *it1 << " ";
 			}
 			else {
-				std::cout << *it1;
-				fout << *it1;
-			}
-		}
-		std::cout << endl;
-		fout << endl;
-		std::cout << " Posts: ";
-		fout << " Posts: ";
-		for (auto it1 = it->second.Posts.begin(); it1 != it->second.Posts.end(); it1++)
-		{
-			if (it1 != prev(it->second.Posts.end())) {
 				std::cout << *it1 << ",";
 				fout << *it1 << ",";
+			}
+		}
+		for (auto it1 = ptNodes[*it].Posts.begin(); it1 != ptNodes[*it].Posts.end(); it1++)
+		{
+			if (it1 != prev(ptNodes[*it].Posts.end())) {
+				std::cout << *it1 << " ";
+				fout << *it1 << " ";
 			}
 			else {
 				std::cout << *it1;
@@ -548,30 +674,32 @@ void Controler::view(ofstream &fout)
 		fout << endl;
 	}
 
-	std::cout << "\nPR:" << endl;
-	fout << "\nPR:" << endl;
+	std::cout << "\nBefore add controller PR ";
+	fout << "\nBefore add controller PR ";
 	for (string s : PR) {
 		std::cout << s << " ";
 		fout << s << " ";
 	}
 	cout << endl;
 	fout << endl;
-	std::cout << "\nPA:" << endl;
-	fout << "\nPA:" << endl;
+	std::cout << "PA ";
+	fout << "PA ";
 	for (string s : PA) {
 		std::cout << s << " ";
 		fout << s << " ";
 	}
-	cout << endl;
-	fout << endl;
+	cout << endl << endl;
+	fout << endl << endl;
 
-	std::cout << "\nSiphons:" << endl;
-	fout << "\nSiphons:" << endl;
+	std::cout << "Siphons and empty clean ComSiphon:" << endl;
+	fout << "Siphons and empty clean ComSiphons:" << endl;
+	int cleanNum = 0;
 	for (auto it = Siphons.begin(); it != Siphons.end(); it++)
 	{
 		if (it->second.clean) {
 			cout << it->first << ":[empty clean] ";
 			fout << it->first << ":[empty clean] ";
+			cleanNum++;
 		}
 		else {
 			cout << it->first << ": ";
@@ -581,23 +709,22 @@ void Controler::view(ofstream &fout)
 			cout << place << " ";
 			fout << place << " ";
 		}
-		cout << endl;
-		fout << endl;
-	}
-
-	std::cout << "\nComSiphons:" << endl;
-	fout << "\nComSiphons:" << endl;
-	for (auto it = ComSiphons.begin(); it != ComSiphons.end(); it++)
-	{
-		cout << it->first << ": ";
-		fout << it->first << ": ";
-		for (string place : it->second) {
-			cout << place << " ";
-			fout << place << " ";
+		if (it->second.clean) 
+		{
+			std::cout << "\nComSiphon: ";
+			fout << "\nComSiphon: ";
+			cout << it->first << ": ";
+			fout << it->first << ": ";
+			for (string s : ComSiphons[it->first]) {
+				cout << s << " ";
+				fout << s << " ";
+			}
 		}
 		cout << endl;
 		fout << endl;
 	}
+	std::cout << "===Siphons number:" << Siphons.size() << ", Clean number:" << cleanNum << endl;
+	fout << "===Siphons number:" << Siphons.size() << ", Clean number:" << cleanNum << endl;
 }
 
 /************************************
@@ -611,10 +738,10 @@ void Controler::view(ofstream &fout)
 bool Controler::prePre(const string& ptName,set<string> &prePre)
 {
 	bool ret = false;
-	set<string> pres = ptNodes[ptName].Pres;
+	set<string,cmpByKey> pres(ptNodes[ptName].Pres);
 	for (auto it = pres.begin(); it != pres.end(); it++)
 	{
-		set<string> prepre = ptNodes[*it].Pres;
+		set<string,cmpByKey> prepre(ptNodes[*it].Pres);
 		for (auto it1 = prepre.begin(); it1 != prepre.end(); it1++)
 		{
 			prePre.insert(*it1);

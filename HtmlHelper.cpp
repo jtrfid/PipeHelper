@@ -22,6 +22,195 @@ HtmlHelper::~HtmlHelper()
 }
 
 /**************************************
+ * 读取PIPE输出的html文件，解析后生成LINGO输入格式文件
+ * 参数：
+ * const string& Invariant: PIPE输出的Invariant Analysis.html文件
+ * const string& Incidence: PIPE输出的Incidence Matrix.html文件
+ * const string& outFile:  解析后生成LINGO输入格式文件
+ * 成功返回true，否则返回false
+ ***************************************/
+bool HtmlHelper::InvariantsIncidences(const string& Invariant, const string& Incidence, const string &outFile)
+{
+	clear();
+	vector<string> fromHtml1;
+	if (!InvariantHtml(Invariant, fromHtml1)) return false;
+	if (!InvariantHtml(fromHtml1))
+	{
+		std::cout << "\n=== Error!! read " << Invariant << " === " << endl;
+		return false;
+	}
+	// since clear, copy Pinvariants to Pinvariants1
+	map<int, vector<int>> Pinvariants1(Pinvariants);
+
+	vector<string> fromHtml2;
+	if (!IncidencesHtml(Incidence, fromHtml2)) return false;
+	if (!IncidencesHtml(fromHtml2)) {
+		std::cout << "\n=== Error!! read " << Incidence << " == = " << endl;
+		return false;
+	}
+
+	ofstream fout(outFile);
+	std::cout << "!库所;" << endl;
+	fout << "!库所;" << endl;
+	for (vector<string>::const_iterator it = Pvector.begin(); it != Pvector.end(); it++)
+	{
+		if (it == Pvector.end() - 1) {
+			std::cout << *it << "~";
+			fout << *it << "~";
+		}
+		else {
+			std::cout << *it << "\t";
+			fout << *it << "\t";
+		}
+	}
+	std::cout << endl << endl;
+	fout << endl << endl;
+	std::cout << "!变迁;" << endl;
+	fout << "!变迁;" << endl;
+	for (vector<string>::const_iterator it = Tvector.begin(); it != Tvector.end(); it++)
+	{
+		if (it == Tvector.end() - 1) {
+			std::cout << *it << "~";
+			fout << *it << "~";
+		}
+		else {
+			std::cout << *it << "\t";
+			fout << *it << "\t";
+		}
+	}
+	std::cout << endl << endl;
+	fout << endl << endl;
+	std::cout << "!P不变式个数;" << endl;
+	fout << "!P不变式个数;" << endl;
+	for (int i = 1; i <= Pinvariants1.size(); i++)
+	{
+		string s;
+		s.assign("z").append(to_string(i));
+		if (i == Pinvariants1.size()) {
+			std::cout << s << "~";
+			fout << s << "~";
+		}
+		else {
+			std::cout << s << " ";
+			fout << s << " ";
+		}
+		
+	}
+	std::cout << endl << endl;
+	fout << endl << endl;
+	std::cout << "!pre;" << endl;
+	fout << "!pre;" << endl;
+	for (int i = 0; i < Tvector.size(); i++)
+	{
+		int j = 0;
+		for (map<string, vector<int>>::const_iterator it = BackwardMatrix.begin(); it != BackwardMatrix.end(); it++, j++)
+		{
+			if (j == BackwardMatrix.size() - 1) {
+				if (i == Tvector.size() - 1) {
+					std::cout << it->second[i] << "~";
+					fout << it->second[i] << "~";
+				}
+				else {
+					std::cout << it->second[i];
+					fout << it->second[i];
+				}
+			}
+			else {
+				std::cout << it->second[i] << "\t";
+				fout << it->second[i] << "\t";
+			}
+		}
+		std::cout << endl;
+		fout << endl;
+	}
+
+	std::cout << endl << endl;
+	fout << endl << endl;
+	std::cout << "!post;" << endl;
+	fout << "!post;" << endl;
+	for (int i = 0; i < Tvector.size(); i++)
+	{
+		int j = 0;
+		for (map<string, vector<int>>::const_iterator it = ForwardMatrix.begin(); it != ForwardMatrix.end(); it++, j++)
+		{
+			if (j == ForwardMatrix.size() - 1) {
+				if (i == Tvector.size() - 1) {
+					std::cout << it->second[i] << "~";
+					fout << it->second[i] << "~";
+				}
+				else {
+					std::cout << it->second[i];
+					fout << it->second[i];
+				}
+			}
+			else {
+				std::cout << it->second[i] << "\t";
+				fout << it->second[i] << "\t";
+			}
+		}
+		std::cout << endl;
+		fout << endl;
+	}
+	std::cout << endl << endl;
+	fout << endl << endl;
+	std::cout << "!P-invariant matrix;" << endl;
+	fout << "!P-invariant matrix;" << endl;
+	for (map<int, vector<int>>::const_iterator it = Pinvariants1.begin(); it != Pinvariants1.end(); it++)
+	{
+		for (vector<int>::const_iterator it1 = it->second.begin(); it1 != it->second.end(); it1++)
+		{
+			if (it1 == it->second.end() - 1) {
+				if (next(it) == Pinvariants1.end()) {
+					std::cout << *it1 << "~";
+					fout << *it1 << "~";
+				}
+				else {
+					std::cout << *it1;
+					fout << *it1;
+				}
+			}
+			else {
+				std::cout << *it1 << "\t";
+				fout << *it1 << "\t";
+			}
+		}
+		std::cout << endl;
+		fout << endl;
+	}
+	std::cout << endl << endl;
+	fout << endl << endl;
+	std::cout << "!M0;" << endl;
+	fout << "!M0;" << endl;
+	for (map<string, vector<int>>::const_reverse_iterator it = Marking.rbegin(); it != Marking.rend(); it++)
+	{
+		//std::cout << it->first << endl;
+		//fout << it->first << endl;
+		for (vector<int>::const_iterator it1 = it->second.begin(); it1 != it->second.end(); it1++)
+		{
+			if (it1 == it->second.end() - 1) {
+				std::cout << *it1 << "~";
+				fout << *it1 << "~";
+			}
+			else {
+				std::cout << *it1 << "\t";
+				fout << *it1 << "\t";
+			}
+		}
+		std::cout << endl;
+		fout << endl;
+		break; // 需要一个即可
+	}
+	std::cout << endl;
+	fout << endl;
+
+	fout.close();
+	std::cout << "\n=== ok read " << Invariant << " === " << endl;
+	std::cout << "\n=== ok read " << Incidence << " === " << endl;
+	std::cout << "\n=== ok save " << outFile << " === " << endl;
+	return true;
+}
+
+/**************************************
  * 读取PIPE输出的html文件，解析后生成文本文件
  * 参数：
  * const string& htmlFile: PIPE输出的Invariant Analysis.html文件

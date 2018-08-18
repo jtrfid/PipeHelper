@@ -8,49 +8,6 @@
 
 using namespace std;
 
-void invariantTest()
-{
-	HtmlHelper pipe;
-	string htmlFile = "Invariant Analysis.html";
-	string outFile = "Invariant Analysis.txt";
-	pipe.InvariantsHtml(htmlFile, outFile);
-}
-
-void incidenceTest()
-{
-	HtmlHelper pipe;
-	string htmlFile = "Incidence Matrix.html";
-	string outFile = "Incidence Matrix.txt";
-	pipe.IncidencesHtml(htmlFile, outFile);
-}
-
-void xmlTest()
-{
-	XmlHelper pipe;
-	string xmlFile = "PIPE.xml";
-	string outFile = "PIPE.txt";
-	pipe.readXml(xmlFile, outFile);
-}
-
-void saveXml()
-{
-	XmlHelper pipe;
-	string xmlFile = "PIPE.xml";
-	string outFile = "PIPE.txt";
-	pipe.readXml(xmlFile, outFile);
-
-	string outXml = "myPIPE.xml";
-	//pipe.saveXml(outXml);
-}
-
-void pnt2xml()
-{
-	XmlHelper pipe;
-	string pntFile = "INA1.pnt";
-	string xmlFile = "INA.xml";
-	pipe.pnt2xml(pntFile, xmlFile);
-}
-
 int main()
 {
 	//invariantTest();
@@ -69,9 +26,10 @@ int main()
 			cout << "\n1: pnt to xml.\n"
 				<< "2: Invariant Analysis.html to txt.\n"
 				<< "3: Incidence Matrix.html to txt.\n"
-				<< "4: xml to txt.\n"
-				<< "5: comSiphons(need SESSION.ina).\n"
-				<< "6: controler(need SESSION.ina).\n"
+				<< "4: Invariant Analysis.html and Incidence Matrix.html to LINGO.\n"
+				<< "5: xml to txt.\n"
+				<< "6: comSiphons(need SESSION.ina).\n"
+				<< "7: controler(need SESSION.ina).\n"
 				<< "0: exit!\n";
 			cout << "\nPlease select: ";
 		}
@@ -81,7 +39,7 @@ int main()
 		{
 		case '1':
 			cout << "input pnt file: ";
-			pnt = "";
+			pnt.clear();
 			while(pnt.empty()) getline(cin, pnt);
 			if (pnt.find_last_of('.') == string::npos) pnt.append(".pnt");
 			outFile = pnt + ".xml";
@@ -98,25 +56,32 @@ int main()
 			pipe1.IncidencesHtml(htmlFile, outFile);
 			break;
 		case '4':
+			outFile = "LINGO.txt";
+			pipe1.InvariantsIncidences("Invariant Analysis.html", "Incidence Matrix.html", outFile);
+			break;
+		case '5':
 			cout << "input xml file: ";
 			xml= "";
+			xml.clear();
 			while (xml.empty()) getline(cin, xml);
 			if (xml.find_last_of('.') == string::npos) xml.append(".xml");
 			outFile = xml + ".txt";
 			pipe.readXml(xml, outFile);
 			break;
-		case '5':
+		case '6':
 			cout << "input pnt file(include PR and PA): ";
 			//pnt = "INA2.pnt"; 
+			pnt.clear();
 			while (pnt.empty()) getline(cin, pnt);
 			if (pnt.find_last_of('.') == string::npos) pnt.append(".pnt");
 			outFile = pnt + ".txt";
 			controler.comSiphons(pnt,"SESSION.ina",outFile);
 			break;
 			// 由.pnt和SESSION.ina文件计算控制器，生成新的含有控制器的pnt文件
-		case '6':
+		case '7':
 			cout << "input pnt file(include PR and PA): ";
 			//pnt = "INA2.pnt"; 
+			pnt.clear();
 			while (pnt.empty()) getline(cin, pnt);
 			if (pnt.find_last_of('.') == string::npos) pnt.append(".pnt");
 			outFile = pnt + ".txt";
