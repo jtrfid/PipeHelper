@@ -177,7 +177,7 @@ public:
 		}
 		s = s.substr(pos);
 
-		// 删除后缀空格
+		// 删除s的后缀空格
 		while (1)
 		{
 			char end = s.back();
@@ -196,9 +196,9 @@ public:
 	 *************************************/
 	static vector<string>& split(const string& s, vector<string>& sVector, char delimit)
 	{
-		string str(s);
 		if (s.empty()) return sVector;
-		trim(str);
+		string str(s); // 复制s至str
+		trim(str); // 去除前后缀空格('\n','\r','\t',' ')
 		if (str.empty()) return sVector;
 		string::size_type pos1 = 0, pos2 = 0;
 		while (1)
