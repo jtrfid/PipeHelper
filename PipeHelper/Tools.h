@@ -7,18 +7,20 @@
 using namespace std;
 
 /***************************************************
- * map key compare
+ * map key compare(要求严格弱序化,即相等元素,返回false)
  * include compare string's length
  * 用于排序map的keys，如："P1","P2","P10",...
  * 用法：
- * （1）map键值排序：map<sting,int,cmpByKey> map1;
- * （2）vector<string>排序：
+ * （1）map键值排序：map<string,int,cmpByKey> map1;
+ * （2）set排序: set<string,cmpByKey> set1;
+ * （3）vector<string>排序：
  *      #include <algorithm>
  *      vector<string> vec1;
  *      std::sort(vec1.begin(), vec1.end(), cmpByKey());
  ****************************************************/
 struct cmpByKey {
-	bool operator()(const string& lhs, const string& rhs) {
+	bool operator()(const std::string& lhs, const std::string& rhs) const
+	{
 		bool ret;
 		if (lhs.size() == rhs.size())
 			ret = lhs < rhs ? true : false;
@@ -220,7 +222,52 @@ public:
 		return sVector;
 	}
 
-	// s1和s2集合是否相同
+	/*************************************
+	 * 获取文件扩展名（如，".docx")
+	 * 参数ext返回文件扩展名
+	 * 无扩展名，函数返回false; 否则返回true
+	 *************************************/
+	static bool extFile(const string& file, string& ext)
+	{
+		string::size_type pos;
+		pos = file.find_last_of('.');
+		if (pos == string::npos) return false;
+		ext = file.substr(pos);
+		return true;
+	}
+
+	/*************************************
+	 * 字符串中的小写字母转为大写字母
+	 *************************************/
+	static string& toUpper(string &s)
+	{
+		for (string::iterator it = s.begin(); it != s.end(); ++it)
+			if (*it >= 'a' && *it <= 'z') *it = *it - ('a' - 'A');
+		return s;
+	}
+
+	/*************************************
+	 * 调用C语言字符串库函数，忽略大小写，比较两个字符串
+	 * s1 > s2, s1= s2, s1 < s2 分别返回: 大于0,0,小于0的整数 
+	 *************************************/
+	static int compareI(const string& s1, const string& s2)
+	{
+		return _strcmpi(s1.c_str(), s2.c_str());
+	}
+
+
+	/********************************************
+	 检测两个集合是否相等:
+	 事实上可以用定义于头文件 <algorithm>的算法：
+	 (1) 如果范围 [first1, last1) 和范围 [first2, last2) 相等，返回 true ，否则返回 false
+	 template< class InputIt1, class InputIt2 >
+	 bool equal( InputIt1 first1, InputIt1 last1,
+	 InputIt2 first2, InputIt2 last2 );
+
+	 (2) 如果范围 [first1, last1) 和范围 [first2, first2 + (last1 - first1) 相等，返回 true ，否则返回 false
+	 template< class InputIt1, class InputIt2 >
+	 bool equal( InputIt1 first1, InputIt1 last1, InputIt2 first2 );
+	********************************************/
 	static bool sameSet(const set<string>& s1, const set<string>& s2)
 	{
 		if (s1.size() != s2.size()) return false;
